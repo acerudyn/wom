@@ -242,6 +242,18 @@
           </ul>
           </li>
 
+          <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="#"><i class="fa fa-eye"></i> View Data</a></li>
+          </ul>
+          </li>
+
 <!--============== ADMIN HO ================== -->
 @elseif (Auth::user()->jabatan == 'Admin HO')
     <li class="active treeview">
