@@ -334,18 +334,6 @@
   </ul>
   </li>
 
-    <li class="active treeview">
-    <a href="#">
-      <i class="fa fa-file-pdf-o"></i> <span>Invoice</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
-    </a>
-    <ul class="treeview-menu">
-      <li class="active"><a href="#"><i class="fa fa-eye"></i> View Data</a></li>
-    </ul>
-    </li>
-
   <!--============== ADMIN MSO ================== -->
 @elseif (Auth::user()->jabatan == 'Admin MSO')
   <li class="active treeview">
@@ -402,17 +390,6 @@
     </ul>
     </li>
 
-      <li class="active treeview">
-      <a href="#">
-        <i class="fa fa-file-pdf-o"></i> <span>Invoice</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li class="active"><a href="#"><i class="fa fa-eye"></i> View Data</a></li>
-      </ul>
-      </li>
 @endif
 
         <li class="header">USER</li>
