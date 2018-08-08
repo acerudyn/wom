@@ -79,17 +79,24 @@ Route::post('/storeLookup', 'DataSpkController@filter');
 Route::get('/showSpkByRo', 'spkController@indexRo');
 Route::get('/editSpkByRo/{id}', 'spkController@editRo');
 Route::post('/updateSpkByRo/{id}', 'spkController@updateRo');
+Route::get('/showLookupRo', 'DataSpkController@lookupRo');
+Route::post('/storeLookupRo', 'DataSpkController@filterRo');
 
 /*------------------------Admin MSO--------------------------*/
 Route::get('/showSpkByMso', 'spkController@indexMso');
 Route::get('/editSpkByMso/{id}', 'spkController@editMso');
 Route::post('/updateSpkByMso/{id}', 'spkController@updateMso');
+Route::get('/showLookupMso', 'DataSpkController@lookupMso');
+Route::post('/storeLookupMso', 'DataSpkController@filterMso');
 
 /*------------------------Admin Partner--------------------------*/
 Route::get('/showSpkByPartner', 'spkController@indexPartner');
+Route::get('/showLookupPartner', 'DataSpkController@lookupPartner');
+Route::post('/storeLookupPartner', 'DataSpkController@filterPartner');
 
 /*------------------------Admin Finance--------------------------*/
 Route::get('/showSpkByFinance', 'spkController@indexFinance');
+Route::post('/storeLookupFinance', 'DataSpkController@filterFinance');
 
 
 /* <================== USER TABLE CONTROLLER ==================> */
