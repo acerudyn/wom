@@ -13,12 +13,68 @@
   </section>
     <!-- Main content -->
     <section class="content">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Filter Lookup</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" action="{{'storeLookup'}}" enctype="multipart/form-data" method="post">
+              {{ csrf_field() }}
+              <div class="box-body">
+                <div class="form-group">
+                <label label for="inputEmail3" class="col-sm-2 control-label">Pilih Partner</label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="id_partner" required>
+                    <option value="">Pilih Partner</option>
+                    @foreach($partners as $data)
+                      <option value="{{$data->id_partner}}">{{$data->nama_partner}}</option>
+                    @endforeach
+                  </select>
+               </div>
+              </div>
+              <div class="form-group">
+              <label label for="inputEmail3" class="col-sm-2 control-label">Data Lookup</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="parameter" required>
+                  <option value="">Pilih Data Lookup</option>
+                  <option value="tid">TID</option>
+                  <option value="mid">MID</option>
+                  <option value="sn_edc">Serial Number</option>
+                  <option value="no_spk">Nomor SPK</option>
+                </select>
+             </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Value Lookup</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputEmail3"
+                 placeholder="Fill Value" name="value_param" required >
+              </div>
+            </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right">Search</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+      <!-- /.row -->
+
+
       <div class="row">
         <div class="col-xs-12">
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data SPK</h3>
+              <h3 class="box-title">Result Data Lookup</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
