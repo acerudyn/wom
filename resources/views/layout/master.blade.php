@@ -229,6 +229,7 @@
         </ul>
         </li>
 
+        <!--
           <li class="active treeview">
           <a href="#">
             <i class="fa fa-file-pdf-o"></i> <span>Invoice</span>
@@ -241,6 +242,7 @@
             <li class="active"><a href="#"><i class="fa fa-eye"></i> View Data</a></li>
           </ul>
           </li>
+        -->
 
           <li class="active treeview">
           <a href="#">
@@ -250,7 +252,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#"><i class="fa fa-eye"></i> View Data</a></li>
+            <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
           </ul>
           </li>
 
