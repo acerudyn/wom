@@ -70,6 +70,10 @@ Route::get('/viewSpkPdf/{id}', 'spkController@viewPdf');
 Route::get('/streamSpkPdf/{id}', 'spkController@streamPdf');
 Route::get('/downloadSpkPdf/{id}', 'spkController@downloadPdf');
 
+/* <================== DATA SPK CONTROLLER ==================> */
+Route::get('/showLookup', 'DataSpkController@lookup');
+Route::post('/storeLookup', 'DataSpkController@filter');
+
 
 /*------------------------Admin RO--------------------------*/
 Route::get('/showSpkByRo', 'spkController@indexRo');
