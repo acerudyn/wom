@@ -69,4 +69,10 @@ class DataSpkController extends Controller
                                         ->with(compact('partner'));
     }
 
+  public function showExport()
+    {
+        $partners = DB::table('partner')->get();
+        return view('admin/spkExport')->with('partners', $partners);
+    }
+
 }
