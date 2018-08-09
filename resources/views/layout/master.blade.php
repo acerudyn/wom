@@ -322,6 +322,18 @@
       </ul>
       </li>
 
+      <li class="active treeview">
+      <a href="#">
+        <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
+      </ul>
+      </li>
+
   <!--============== ADMIN RO ================== -->
 @elseif (Auth::user()->jabatan == 'Admin RO')
   <li class="active treeview">
@@ -336,6 +348,18 @@
   </ul>
   </li>
 
+  <li class="active treeview">
+  <a href="#">
+    <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
+  </ul>
+  </li>
+
   <!--============== ADMIN MSO ================== -->
 @elseif (Auth::user()->jabatan == 'Admin MSO')
   <li class="active treeview">
@@ -347,6 +371,18 @@
   </a>
   <ul class="treeview-menu">
     <li class="active"><a href="{{'/showSpkByMso'}}"><i class="fa fa-eye"></i> View Data</a></li>
+  </ul>
+  </li>
+
+  <li class="active treeview">
+  <a href="#">
+    <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
   </ul>
   </li>
 
@@ -377,6 +413,18 @@
     </ul>
     </li>
 
+    <li class="active treeview">
+    <a href="#">
+      <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
+    </ul>
+    </li>
+
     <!--============== ADMIN PARTNER ================== -->
   @elseif (Auth::user()->jabatan == 'Admin Partner')
     <li class="active treeview">
@@ -389,6 +437,18 @@
     <ul class="treeview-menu">
       <li><a href="{{'/addSpk'}}"><i class="fa fa-plus-square"></i> Input Data</a></li>
       <li class="active"><a href="{{'/showSpkByPartner'}}"><i class="fa fa-eye"></i> View Data</a></li>
+    </ul>
+    </li>
+
+    <li class="active treeview">
+    <a href="#">
+      <i class="fa fa-file-pdf-o"></i> <span>Data Lookup</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
     </ul>
     </li>
 
