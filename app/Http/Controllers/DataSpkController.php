@@ -30,36 +30,6 @@ class DataSpkController extends Controller
                                        ->with(compact('partners'));
     }
 
-  public function lookupRo()
-    {
-        //$datas    = Spk::get();
-        $datas    = DB::table('spk')->limit(0)->get();
-        $partners = DB::table('partner')->get();
-
-        return view('admin/dataLookupRo')->with(compact('datas'))
-                                       ->with(compact('partners'));
-    }
-
-  public function lookupMso()
-    {
-        //$datas    = Spk::get();
-        $datas    = DB::table('spk')->limit(0)->get();
-        $partners = DB::table('partner')->get();
-
-        return view('admin/dataLookupMso')->with(compact('datas'))
-                                       ->with(compact('partners'));
-    }
-
-  public function lookupPartner()
-    {
-        //$datas    = Spk::get();
-        $datas    = DB::table('spk')->limit(0)->get();
-        $partners = DB::table('partner')->get();
-
-        return view('admin/dataLookupPartner')->with(compact('datas'))
-                                       ->with(compact('partners'));
-    }
-
   public function filter(Request $request)
     {
 
@@ -82,70 +52,21 @@ class DataSpkController extends Controller
                                        ->with(compact('partners'));
     }
 
-  public function filterRo(Request $request)
+  public function viewLookup($id)
     {
+      $tampil   = Spk::where('id_spk', $id)->first();
+      $data_mso = DB::table('mso')->where('kota_mso', $tampil->kota_mso)->first();
 
-        $partners = DB::table('partner')->get();
+      // if data mso null
+      if (empty($data_mso)) {
+        flash()->error('Error', 'Kota Mso tidak ditemukan silahkan edit!');
+        return redirect('/showSpk');
+      }
 
-        $this->validate($request, [
-            'value_param' => 'required|min:3',
-        ]);
-
-        $id_partner   = $request->id_partner;
-        $parameter    = $request->parameter;
-        $value_param  = $request->value_param;
-
-        $datas = DB::table('spk')->where([
-                                            ['id_partner', $id_partner],
-                                            [$parameter, $value_param],
-                                          ])->get();
-
-        return view('admin/dataLookupRo')->with(compact('datas'))
-                                       ->with(compact('partners'));
+      $partner  = DB::table('partner')->where('id_partner', $tampil->id_partner)->first();
+      return view('admin/viewSpkLookup')->with(compact('tampil'))
+                                        ->with(compact('data_mso'))
+                                        ->with(compact('partner'));
     }
-
-  public function filterMso(Request $request)
-    {
-
-        $partners = DB::table('partner')->get();
-
-        $this->validate($request, [
-            'value_param' => 'required|min:3',
-        ]);
-
-        $id_partner   = $request->id_partner;
-        $parameter    = $request->parameter;
-        $value_param  = $request->value_param;
-
-        $datas = DB::table('spk')->where([
-                                            ['id_partner', $id_partner],
-                                            [$parameter, $value_param],
-                                          ])->get();
-
-        return view('admin/dataLookupMso')->with(compact('datas'))
-                                       ->with(compact('partners'));
-    }
-
-  public function filterPartner(Request $request)
-    {
-
-        $partners = DB::table('partner')->get();
-
-        $this->validate($request, [
-            'value_param' => 'required|min:3',
-        ]);
-
-        $id_partner   = $request->id_partner;
-        $parameter    = $request->parameter;
-        $value_param  = $request->value_param;
-
-        $datas = DB::table('spk')->where([
-                                            ['id_partner', $id_partner],
-                                            [$parameter, $value_param],
-                                          ])->get();
-        return view('admin/dataLookupPartner')->with(compact('datas'))
-                                             ->with(compact('partners'));
-    }
-
 
 }
