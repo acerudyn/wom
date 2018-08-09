@@ -124,9 +124,14 @@
                     {{$data->status_pengerjaan}}
                   </td>
                   <td>
-                    <a href="{{url('viewSpk', $data->id_spk)}}" title="view"><button type="button" class="btn btn-default btn-info btn-xs"><i class="fa fa-eye"></i></button></a>
-                    <a href="{{url('editSpk', $data->id_spk)}}" title="edit"><button type="button" class="btn btn-default btn-warning btn-xs"><i class="fa fa-pencil"></i></button></a>
-                    <a href="{{url('deleteSpk', $data->id_spk)}}" title="delete"><button type="button" class="btn btn-default btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                    @if (Auth::user()->jabatan == 'Super Admin' OR Auth::user()->jabatan == 'Admin HO')
+                      <a href="{{url('viewSpkLookup', $data->id_spk)}}" title="view"><button type="button" class="btn btn-default btn-info btn-xs"><i class="fa fa-eye"></i></button></a>
+                      <a href="{{url('editSpk', $data->id_spk)}}" title="edit"><button type="button" class="btn btn-default btn-warning btn-xs"><i class="fa fa-pencil"></i></button></a>
+                      <a href="{{url('deleteSpk', $data->id_spk)}}" title="delete"><button type="button" class="btn btn-default btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                    @else
+                      <a href="{{url('viewSpkLookup', $data->id_spk)}}" title="view"><button type="button" class="btn btn-default btn-info btn-xs"><i class="fa fa-eye"></i></button></a>
+                    @endif
+
                     @if ($data->status_spk == 'selesai')
                       <a href="{{url('streamSpkPdf', $data->id_spk)}}" title="view pdf" target="_blank"><button type="button" class="btn btn-default btn-success btn-xs"><i class="fa fa-file-pdf-o"></i></button></a>
                       <a href="{{url('downloadSpkPdf', $data->id_spk)}}" title="download pdf"><button type="button" class="btn btn-default btn-primary btn-xs"><i class="fa fa-download"></i></button></a>
