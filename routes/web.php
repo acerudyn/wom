@@ -74,6 +74,7 @@ Route::get('/downloadSpkPdf/{id}', 'spkController@downloadPdf');
 Route::get('/showLookup', 'DataSpkController@lookup');
 Route::post('/storeLookup', 'DataSpkController@filter');
 Route::get('/viewSpkLookup/{id}', 'DataSpkController@viewLookup');
+Route::get('/showExport', 'DataSpkController@showExport');
 
 /*------------------------Admin RO--------------------------*/
 Route::get('/showSpkByRo', 'spkController@indexRo');
