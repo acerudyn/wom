@@ -254,6 +254,9 @@
           <ul class="treeview-menu">
             <li class="active"><a href="{{'/showLookup'}}"><i class="fa fa-search"></i> Search Data</a></li>
           </ul>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{'/showExport'}}"><i class="fa fa-download"></i> Export Data</a></li>
+          </ul>
           </li>
 
 <!--============== ADMIN HO ================== -->
