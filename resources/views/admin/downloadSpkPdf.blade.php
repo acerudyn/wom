@@ -53,7 +53,7 @@
                         <nobr>Tanggal SPK</nobr>
                     </td>
                     <td
-                        style="font-family:Calibri;text-align:right;font-size:11px;color:#000000;font-weight:bold;border:1px solid;border-left-color:#000000;border-right-color:#000000;border-top-color:#000000;border-bottom-color:#000000;min-width:50px"
+                        style="font-family:Calibri;font-size:11px;color:#000000;font-weight:bold;border:1px solid;border-left-color:#000000;border-right-color:#000000;border-top-color:#000000;border-bottom-color:#000000;min-width:50px"
                         colspan="2">
                         <nobr>
                           {{date('d-m-Y', strtotime($tampilPdf->tgl_spk))}}
