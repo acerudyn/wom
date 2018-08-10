@@ -69,7 +69,7 @@
             <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Data MSO</span>
+              <span class="info-box-text">Data Kota</span>
               <span class="info-box-number">{{$mso}}<small> Data</small></span>
             </div>
             <!-- /.info-box-content -->
