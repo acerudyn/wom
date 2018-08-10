@@ -75,4 +75,36 @@ class DataSpkController extends Controller
         return view('admin/spkExport')->with('partners', $partners);
     }
 
+ public function filterExport(Request $request)
+    {
+
+      $id_partner = $request->id_partner;
+      $start      = $request->awal_periode;
+      $end        = $request->akhir_periode;
+      $type       = 'xlsx';
+
+      // Funtion convert d-m-Y to Y-m-d
+      $convert_awal = date('Y-m-d', strtotime($start));
+      $convert_akhir = date('Y-m-d', strtotime($end));
+
+      $bank = DB::table('partner')->where('id_partner', $id_partner)->first();
+      $data = DB::table('spk')->where('id_partner', $id_partner)->whereBetween('tgl_pengerjaan', [$convert_awal, $convert_akhir])->get();
+
+      /*
+      $datas  = DB::table('spk')->where([
+                                          ['id_partner', $id_partner],
+                                          [$parameter, $value_param],
+                                        ])->get();
+      */
+
+      $data= json_decode( json_encode($data), true);
+      return Excel::create('Data_SPK_'.$bank->nama_partner.'_'.date('d-m-Y'), function($excel) use ($data) {
+      	$excel->sheet('DataSpk', function($sheet) use ($data)
+      	      {
+      		$sheet->fromArray($data);
+      	      });
+      })->download($type);
+    }
+
+
 }
