@@ -75,6 +75,7 @@ Route::get('/showLookup', 'DataSpkController@lookup');
 Route::post('/storeLookup', 'DataSpkController@filter');
 Route::get('/viewSpkLookup/{id}', 'DataSpkController@viewLookup');
 Route::get('/showExport', 'DataSpkController@showExport');
+Route::post('/storeExport', 'DataSpkController@filterExport');
 
 /*------------------------Admin RO--------------------------*/
 Route::get('/showSpkByRo', 'spkController@indexRo');
