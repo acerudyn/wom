@@ -78,13 +78,13 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
+
+                    <!--
                       <input class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'"
                       data-mask="" type="text" id="tgl_duedate_spk" name="tgl_duedate_spk">
-                  <!--    
-                      <input type="text" class="form-control pull-right" id="tgl_duedate_spk" disabled
-                      name="tgl_duedate_spk"
-                      value="{{date('d-m-Y', strtotime($tampiledit->tgl_duedate_spk))}}">
                     -->
+                      <input type="text" class="form-control pull-right" id="tgl_duedate_spk"
+                      name="tgl_duedate_spk" required>
                     </div>
                   </div>
                 </div>
@@ -160,18 +160,22 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Foto 1</label>
 
                   <div class="col-sm-9">
-                    <input type="file" class="form-control" id="inputEmail3"
-                     placeholder="Foto 1" name="foto_1" disabled>
+                    <img src="{{asset('image/'.$tampiledit->foto_1)}}" alt="{{$tampiledit->foto_1}}" width="200" height="200">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Foto 2</label>
 
                   <div class="col-sm-9">
-                    <input type="file" class="form-control" id="inputEmail3"
-                     placeholder="Foto 2" name="foto_2" disabled>
+                    <img src="{{asset('image/'.$tampiledit->foto_2)}}" alt="{{$tampiledit->foto_2}}" width="200" height="200">
                   </div>
                 </div>
+
+              </div>
+              <!-- /.box-body -->
+
+
+              <div class="box-body col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Status SPK</label>
 
@@ -197,12 +201,6 @@
                     </select>
                  </div>
                 </div>
-
-              </div>
-              <!-- /.box-body -->
-
-
-              <div class="box-body col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Jenis EDC</label>
 
@@ -409,12 +407,12 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="{{'/showSpk'}}"><div class="btn btn-warning pull-left">CANCEL</div></a>
-                <button type="submit" class="btn btn-info pull-right">UPDATE</button>
-              </div>
+                </div>
               <!-- /.box-footer -->
-            </form>
           </div>
+          <a href="{{'/showSpk'}}"><div class="btn btn-warning pull-left">CANCEL</div></a>
+          <button type="submit" class="btn btn-info pull-right">UPDATE</button>
+          </form>
           <!-- /.box -->
         </div>
         <!--/ col md-12 -->
