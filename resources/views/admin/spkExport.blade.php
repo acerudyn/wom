@@ -43,8 +43,12 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
+                    <!--
                     <input class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'"
                     data-mask="" type="text" id="awal_periode" name="awal_periode" required>
+                  -->
+                    <input type="text" class="form-control pull-right" id="awal_periode"
+                    name="awal_periode" required>
                  </div>
                 </div>
 
@@ -54,19 +58,16 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
+                    <!--
                     <input class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'"
                     data-mask="" type="text" id="akhir_periode" name="akhir_periode" required>
+                  -->
+                    <input type="text" class="form-control pull-right" id="akhir_periode"
+                    name="akhir_periode" required>
                  </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Pilih Format</label>
 
-                <div class="col-sm-9">
-                  <input type="radio" name="type" value="xls" required> &ensp; xls &emsp;
-                  <input type="radio" name="type" value="xlsx"> &ensp; xlsx
-                </div>
-              </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
