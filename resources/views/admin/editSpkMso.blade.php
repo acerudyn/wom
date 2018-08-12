@@ -88,6 +88,9 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3" value="{{$tampiledit->tid}}"
                      placeholder="TID" name="tid" disabled>
+                     @if ($errors->has('tid'))
+                        <p style="color : red;">{{ $errors->first('tid') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -96,6 +99,9 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="MID" name="mid" disabled value="{{$tampiledit->mid}}">
+                     @if ($errors->has('mid'))
+                        <p style="color : red;">{{ $errors->first('mid') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -127,6 +133,9 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Kontak" name="kontak_merchant" disabled value="{{$tampiledit->kontak_merchant}}">
+                     @if ($errors->has('kontak'))
+                        <p style="color : red;">{{ $errors->first('kontak') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -134,7 +143,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Kontak" name="kontak_merchant" disabled value="{{$tampiledit->jenis_spk}}">
+                     placeholder="Jenis SPK" name="jenis_spk" disabled value="{{$tampiledit->jenis_spk}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -168,9 +177,8 @@
                     <select class="form-control" name="status_spk" required>
                       <option value="">-Pilih Status-</option>
                         <option value="On Progress">On Progress</option>
-                        <option value="Pasang">Pasang</option>
+                        <option value="Pending">Pending</option>
                         <option value="Tunggu Validasi">Tunggu Validasi</option>
-                        <option value="Cancel">Cancel</option>
                     </select>
                  </div>
                 </div>
@@ -205,6 +213,9 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="SN Edc" name="sn_edc" required value="{{$tampiledit->sn_edc}}">
+                     @if ($errors->has('sn_edc'))
+                        <p style="color : red;">{{ $errors->first('sn_edc') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -232,6 +243,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Nomor Simcard" name="nmr_simcard" required
                      value="{{$tampiledit->nmr_simcard}}">
+                     @if ($errors->has('nmr_simcard'))
+                        <p style="color : red;">{{ $errors->first('nmr_simcard') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -241,6 +255,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="SN Simcard" name="sn_simcard" required
                      value="{{$tampiledit->sn_simcard}}">
+                     @if ($errors->has('sn_simcard'))
+                        <p style="color : red;">{{ $errors->first('sn_simcard') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -297,6 +314,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Test Debit" name="test_debit" required
                      value="{{$tampiledit->test_debit}}">
+                     @if ($errors->has('test_debit'))
+                        <p style="color : red;">{{ $errors->first('test_debit') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
 
                   <label class="col-sm-3 control-label">Test Kredit</label>
@@ -304,6 +324,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Test Kredit" name="test_kredit" required
                      value="{{$tampiledit->test_kredit}}">
+                     @if ($errors->has('test_kredit'))
+                        <p style="color : red;">{{ $errors->first('test_kredit') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -312,6 +335,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Test Prepaid" name="test_prepaid" required
                      value="{{$tampiledit->test_prepaid}}">
+                     @if ($errors->has('test_prepaid'))
+                        <p style="color : red;">{{ $errors->first('test_prepaid') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -327,6 +353,9 @@
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Drop" name="thermal_drop" required
                      value="">
+                     @if ($errors->has('thermal_drop'))
+                        <p style="color : red;">{{ $errors->first('thermal_drop') }}</p>  <!-- Error validasi -->
+                     @endif
                   </div>
                 </div>
                 <div class="form-group">
