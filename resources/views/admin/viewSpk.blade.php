@@ -29,7 +29,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$partner->nama_partner}}"> <br>
+                     placeholder="Nama Partner" name="maps" required value="{{$partner->nama_partner}}"> <br>
                      <img src="{{asset('image/'.$partner->foto_partner)}}" alt="{{$partner->foto_partner}}" width="200" height="100">
                   </div>
                 </div>
@@ -78,7 +78,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->mid}}">
+                     placeholder="MID" name="maps" required value="{{$tampil->mid}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -86,7 +86,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->nama_merchant}}">
+                     placeholder="Nama Merchant" name="maps" required value="{{$tampil->nama_merchant}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -133,7 +133,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="RO - {{$data_mso->nama_ro}}">
+                     placeholder="Nama RO" name="maps" required value="RO - {{$data_mso->nama_ro}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -141,7 +141,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$data_mso->kota_mso}}">
+                     placeholder="Kota RO" name="maps" required value="{{$data_mso->kota_mso}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -169,7 +169,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->status_spk}}">
+                     placeholder="Status SPK" name="maps" required value="{{$tampil->status_spk}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -177,7 +177,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->status_pengerjaan}}">
+                     placeholder="Status Pengerjaan" name="maps" required value="{{$tampil->status_pengerjaan}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -185,7 +185,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->jenis_edc}}">
+                     placeholder="Jenis EDC" name="maps" required value="{{$tampil->jenis_edc}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -193,7 +193,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->sn_edc}}">
+                     placeholder="SN EDC" name="maps" required value="{{$tampil->sn_edc}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -321,7 +321,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->keterangan_spk}}">
+                     placeholder="Keterangan SPK" name="maps" required value="{{$tampil->keterangan_spk}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -329,7 +329,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->nik_karyawan}}">
+                     placeholder="NIK Karyawan" name="maps" required value="{{$tampil->nik_karyawan}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -337,7 +337,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->nama_mso}}">
+                     placeholder="nama Mso" name="maps" required value="{{$tampil->nama_mso}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -345,7 +345,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->status_invoicing}}">
+                     placeholder="Status Invoicing" name="maps" required value="{{$tampil->status_invoicing}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -353,7 +353,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" required value="{{$tampil->id_invoice}}">
+                     placeholder="ID invoice" name="maps" required value="{{$tampil->id_invoice}}">
                   </div>
                 </div>
 
