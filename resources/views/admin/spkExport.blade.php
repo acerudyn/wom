@@ -29,14 +29,13 @@
                 <label label for="inputEmail3" class="col-sm-2 control-label">Pilih Partner</label>
                 <div class="col-sm-9">
                   <select class="form-control" name="id_partner" required>
-                    <option value="">Pilih Partner</option>
+                    <option value="all">Semua Partner</option>
                     @foreach($partners as $data)
                       <option value="{{$data->id_partner}}">{{$data->nama_partner}}</option>
                     @endforeach
                   </select>
                </div>
               </div>
-              <!--
               <div class="form-group">
               <label label for="inputEmail3" class="col-sm-2 control-label">Jenis SPK</label>
               <div class="col-sm-9">
@@ -49,24 +48,21 @@
                 </select>
              </div>
             </div>
-          -->
-          <!--
             <div class="form-group">
             <label label for="inputEmail3" class="col-sm-2 control-label">Status SPK</label>
             <div class="col-sm-9">
-              <select class="form-control" name="jenis_spk" required>
+              <select class="form-control" name="status_spk" required>
                 <option value="all">Semua Status</option>
                 <option value="On Progress">On Progress</option>
-                <option value="Pasang">Pasang</option>
+                <option value="Retur">Retur</option>
                 <option value="Tunggu Validasi">Tunggu Validasi</option>
                 <option value="Cancel">Cancel</option>
                 <option value="Selesai">Selesai</option>
               </select>
            </div>
           </div>
-        -->
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Periode</label>
+                <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Upload</label>
                 <div class="col-sm-4">
                   <div class="input-group date">
                     <div class="input-group-addon">
@@ -93,6 +89,37 @@
                   -->
                     <input type="text" class="form-control pull-right" id="akhir_periode"
                     name="akhir_periode" required>
+                 </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Validasi</label>
+                <div class="col-sm-4">
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <!--
+                    <input class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'"
+                    data-mask="" type="text" id="awal_periode" name="awal_periode" required>
+                  -->
+                    <input type="text" class="form-control pull-right" id="awal_validasi"
+                    name="awal_validasi" required>
+                 </div>
+                </div>
+
+                <label for="inputEmail3" class="col-sm-1 control-label">Sampai</label>
+                <div class="col-sm-4">
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <!--
+                    <input class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'"
+                    data-mask="" type="text" id="akhir_periode" name="akhir_periode" required>
+                  -->
+                    <input type="text" class="form-control pull-right" id="akhir_validasi"
+                    name="akhir_validasi" required>
                  </div>
                 </div>
               </div>
