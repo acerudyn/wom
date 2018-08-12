@@ -214,6 +214,7 @@ public function indexMso()
           $tgl_duedate_spk   = $request['tgl_duedate_spk'];
           $jenis_spk         = $request['jenis_spk'];
           $perintah_spk      = $request['perintah_spk'];
+          $status_spk        = $request['status_spk'];
 
           $foto_1 = 'no_image.jpg';
           $foto_2 = 'no_image.jpg';
@@ -236,7 +237,8 @@ public function indexMso()
                       ->update(['no_spk'            => $no_spk,
                                 'tgl_duedate_spk'   => $convert_tgl_duedate_spk,
                                 'jenis_spk'         => $jenis_spk,
-                                'perintah_spk'      => $perintah_spk]);
+                                'perintah_spk'      => $perintah_spk,
+                                'status_spk'        => $status_spk]);
 
           flash()->success('Succsess', 'Wow Good Job, Succsess Update Data !');
           return redirect()->to('/showSpk');
