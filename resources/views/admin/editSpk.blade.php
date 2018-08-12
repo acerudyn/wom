@@ -180,10 +180,10 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Status SPK</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control" name="status_spk" disabled>
+                    <select class="form-control" name="status_spk" required>
                       <option value="{{$tampiledit->status_spk}}">{{$tampiledit->status_spk}}</option>
                         <option value="On Progress">On Progress</option>
-                        <option value="Pasang">Pasang</option>
+                        <option value="Retur by HO">Retur</option>
                         <option value="Tunggu Validasi">Tunggu Validasi</option>
                         <option value="Cancel">Cancel</option>
                         <option value="Selesai">Selesai</option>
