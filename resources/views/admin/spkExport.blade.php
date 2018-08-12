@@ -22,7 +22,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="{{'storeExport'}}" enctype="multipart/form-data" method="post">
+            <form class="form-horizontal" action="{{'storeExportBelumFix'}}" enctype="multipart/form-data" method="post">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
@@ -36,6 +36,31 @@
                   </select>
                </div>
               </div>
+              <div class="form-group">
+              <label label for="inputEmail3" class="col-sm-2 control-label">Jenis SPK</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="jenis_spk" required>
+                  <option value="all">Semua Jenis</option>
+                  <option value="Pasang">Pasang</option>
+                  <option value="Tarik">Tarik</option>
+                  <option value="PM">Preventive Maintenance</option>
+                  <option value="CM">Corrective Maintenance</option>
+                </select>
+             </div>
+            </div>
+            <div class="form-group">
+            <label label for="inputEmail3" class="col-sm-2 control-label">Status SPK</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="jenis_spk" required>
+                <option value="all">Semua Status</option>
+                <option value="On Progress">On Progress</option>
+                <option value="Pasang">Pasang</option>
+                <option value="Tunggu Validasi">Tunggu Validasi</option>
+                <option value="Cancel">Cancel</option>
+                <option value="Selesai">Selesai</option>
+              </select>
+           </div>
+          </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Periode</label>
                 <div class="col-sm-4">
