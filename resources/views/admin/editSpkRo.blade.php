@@ -172,7 +172,7 @@
                     <select class="form-control" name="status_spk" required>
                       <option value="{{$tampiledit->status_spk}}">{{$tampiledit->status_spk}}</option>
                         <option value="On Progress">On Progress</option>
-                        <option value="Retur">Retur</option>
+                        <option value="Retur by RO">Retur</option>
                         <option value="Tunggu Validasi">Tunggu Validasi</option>
                         <option value="Cancel">Cancel</option>
                         <option value="Selesai">Selesai</option>
