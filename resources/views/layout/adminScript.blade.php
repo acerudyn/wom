@@ -52,8 +52,8 @@
     //Datemask dd/mm/yyyy
     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
-    //Datemask dd/mm/yyyy
-    //$("#tgl_duedate_spk").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask time hh:mm
+    $("#jam_mulai").inputmask("hh:mm", {"placeholder": "hh:mm"});
 
     //Datemask2 mm/dd/yyyy
     $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
