@@ -113,6 +113,18 @@
       autoclose: true
     });
 
+    //Date picker
+    $('#awal_validasi').datepicker({
+      format: 'dd-mm-yyyy',
+      autoclose: true
+    });
+
+    //Date picker
+    $('#akhir_validasi').datepicker({
+      format: 'dd-mm-yyyy',
+      autoclose: true
+    });
+
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
