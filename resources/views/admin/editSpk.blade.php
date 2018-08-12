@@ -407,17 +407,21 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                </div>
+              </div>
               <!-- /.box-footer -->
           </div>
-          <a href="{{'/showSpk'}}"><div class="btn btn-warning pull-left">CANCEL</div></a>
-          <button type="submit" class="btn btn-info pull-right">UPDATE</button>
-          </form>
           <!-- /.box -->
         </div>
         <!--/ col md-12 -->
       </div>
       <!-- /.row -->
+
+      <div class="box-footer">
+        <a href="{{'/showSpk'}}"><div class="btn btn-warning pull-left">CANCEL</div></a>
+        <button type="submit" class="btn btn-info pull-right">UPDATE</button>
+        </form>
+      </div>
+
     </section>
     <!-- /.content -->
 @endsection
