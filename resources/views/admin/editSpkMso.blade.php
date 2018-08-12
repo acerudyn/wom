@@ -65,7 +65,7 @@
                         <i class="fa fa-calendar"></i>
                       </div>
                       <input type="text" class="form-control pull-right" id="tgl_pengerjaan"
-                      name="tgl_pengerjaan" required value="{{$datenow}}">
+                      name="tgl_pengerjaan" required value="{{$datenow}}" disabled>
                     </div>
                   </div>
                 </div>
