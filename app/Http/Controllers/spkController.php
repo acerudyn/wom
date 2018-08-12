@@ -390,6 +390,16 @@ public function indexMso()
 
               $update = Spk::where('id_spk', $id)->first();
 
+              $this->validate($request, [
+                  'sn_edc'       => 'required|numeric',
+                  'nmr_simcard'  => 'required|numeric',
+                  'sn_simcard'   => 'required|numeric',
+                  'test_debit'   => 'required|numeric',
+                  'test_kredit'  => 'required|numeric',
+                  'test_prepaid' => 'required|numeric',
+                  'thermal_drop' => 'required|numeric',
+              ]);
+
               $tgl_pengerjaan    = $request['tgl_pengerjaan'];
               $status_spk        = $request['status_spk'];
               $status_pengerjaan = $request['status_pengerjaan'];
