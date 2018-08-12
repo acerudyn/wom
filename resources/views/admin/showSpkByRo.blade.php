@@ -61,9 +61,12 @@
                     {{$data->kota_mso}} <br>
                     {{$data->nama_mso}}
                   </td>
-                  <td>{{$data->status_pengerjaan}}</td>
                   <td>
-                    @if ($data->status_spk == 'Selesai')
+                    {{$data->status_pengerjaan}} <br>
+                    {{$data->status_spk}}
+                  </td>
+                  <td>
+                    @if ($data->status_spk == 'Selesai' OR $data->status_spk == 'Cancel')
                       <a href="{{url('viewSpk', $data->id_spk)}}" title="view"><button type="button" class="btn btn-default btn-info btn-xs"><i class="fa fa-eye"></i></button></a>
                       <a href="{{url('streamSpkPdf', $data->id_spk)}}" title="view pdf" target="_blank"><button type="button" class="btn btn-default btn-success btn-xs"><i class="fa fa-file-pdf-o"></i></button></a>
                       <a href="{{url('downloadSpkPdf', $data->id_spk)}}" title="download pdf"><button type="button" class="btn btn-default btn-primary btn-xs"><i class="fa fa-download"></i></button></a>
