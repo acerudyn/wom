@@ -31,7 +31,7 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Link Google Maps" name="maps" disabled value="{{$partner->nama_partner}}"> <br>
+                     placeholder="Nama Partner" name="nama_partner" disabled value="{{$partner->nama_partner}}"> <br>
                      <img src="{{asset('image/'.$partner->foto_partner)}}" alt="{{$partner->foto_partner}}" width="200" height="100">
                   </div>
                 </div>
@@ -172,7 +172,7 @@
                     <select class="form-control" name="status_spk" required>
                       <option value="{{$tampiledit->status_spk}}">{{$tampiledit->status_spk}}</option>
                         <option value="On Progress">On Progress</option>
-                        <option value="Pasang">Pasang</option>
+                        <option value="Retur">Retur</option>
                         <option value="Tunggu Validasi">Tunggu Validasi</option>
                         <option value="Cancel">Cancel</option>
                         <option value="Selesai">Selesai</option>
@@ -245,7 +245,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="adaptor" value="RUSAK"> Rusak
+                    <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
                   </div>
                 </div>
                 <div class="form-group">
@@ -253,7 +253,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="edc" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="edc" value="RUSAK"> Rusak
+                    <input type="radio" name="edc" value="RUSAK" disabled> Rusak
                   </div>
                 </div>
                 <div class="form-group">
@@ -261,7 +261,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="stiker" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="stiker" value="RUSAK"> Rusak
+                    <input type="radio" name="stiker" value="RUSAK" disabled> Rusak
                   </div>
                 </div>
                 <div class="form-group">
@@ -269,7 +269,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="nama_sesuai_lokasi" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="nama_sesuai_lokasi" value="TIDAK"> Tidak
+                    <input type="radio" name="nama_sesuai_lokasi" value="TIDAK" disabled> Tidak
                   </div>
                 </div>
                 <div class="form-group">
@@ -277,7 +277,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="alamat_sesuai_lokasi" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK"> Tidak
+                    <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK" disabled> Tidak
                   </div>
                 </div>
                 <div class="form-group">
@@ -285,7 +285,7 @@
 
                   <div class="col-sm-9">
                     <input type="radio" name="tid_mid_sesuai" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="tid_mid_sesuai" value="TIDAK"> Tidak
+                    <input type="radio" name="tid_mid_sesuai" value="TIDAK" disabled> Tidak
                   </div>
                 </div>
                 <div class="form-group">
