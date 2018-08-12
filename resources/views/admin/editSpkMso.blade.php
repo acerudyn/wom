@@ -383,8 +383,13 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Jam Mulai</label>
                   <div class="col-sm-3">
+                  <!--
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="hh:mm" name="jam_mulai" required >
+                   -->
+
+                     <input class="form-control pull-right" data-inputmask="'alias': 'hh:mm'"
+                     data-mask="" type="text" id="jam_mulai" name="jam_mulai" required>
                   </div>
                 </div>
 
