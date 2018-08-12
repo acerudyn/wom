@@ -400,7 +400,7 @@ public function indexMso()
                   'thermal_drop' => 'required|numeric',
               ]);
 
-              $tgl_pengerjaan    = $request['tgl_pengerjaan'];
+              //$tgl_pengerjaan    = $request['tgl_pengerjaan'];
               $status_spk        = $request['status_spk'];
               $status_pengerjaan = $request['status_pengerjaan'];
               $jenis_edc         = $request['jenis_edc'];
@@ -467,8 +467,9 @@ public function indexMso()
               }
 
               // Funtion convert d-m-Y to Y-m-d
-              $convert_tgl_pengerjaan = date('Y-m-d ', strtotime($tgl_pengerjaan));
-              $now       = $convert_tgl_pengerjaan.$jam_mulai;
+              //$convert_tgl_pengerjaan = date('Y-m-d ', strtotime($tgl_pengerjaan));
+              $datenow   = date('Y-m-d ');
+              $now       = $datenow.$jam_mulai;
               $update_at = date('Y-m-d H:i:s');
 
               DB::table('spk')
