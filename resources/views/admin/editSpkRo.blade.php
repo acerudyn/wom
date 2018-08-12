@@ -244,48 +244,78 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Adaptor</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
+                    @if ($tampiledit->adaptor == 'BAIK')
+                      <input type="radio" name="adaptor" value="BAIK" disabled checked> Baik &emsp;
+                      <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
+                    @elseif ($tampiledit->adaptor == 'RUSAK')
+                      <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="adaptor" value="RUSAK" disabled checked> Rusak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">EDC</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="edc" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="edc" value="RUSAK" disabled> Rusak
+                    @if ($tampiledit->edc == 'BAIK')
+                      <input type="radio" name="edc" value="BAIK" disabled checked> Baik &emsp;
+                      <input type="radio" name="edc" value="RUSAK" disabled> Rusak
+                    @elseif ($tampiledit->edc == 'RUSAK')
+                      <input type="radio" name="edc" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="edc" value="RUSAK" disabled checked> Rusak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Stiker</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="stiker" value="BAIK" disabled> Baik &emsp;
-                    <input type="radio" name="stiker" value="RUSAK" disabled> Rusak
+                    @if ($tampiledit->stiker == 'BAIK')
+                      <input type="radio" name="stiker" value="BAIK" disabled checked> Baik &emsp;
+                      <input type="radio" name="stiker" value="RUSAK" disabled> Rusak
+                    @elseif ($tampiledit->stiker == 'RUSAK')
+                      <input type="radio" name="stiker" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="stiker" value="RUSAK" disabled checked> Rusak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Nama Sesuai Lokasi</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="nama_sesuai_lokasi" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="nama_sesuai_lokasi" value="TIDAK" disabled> Tidak
+                    @if ($tampiledit->nama_sesuai_lokasi == 'YA')
+                      <input type="radio" name="nama_sesuai_lokasi" value="YA" disabled checked> Ya &emsp;
+                      <input type="radio" name="nama_sesuai_lokasi" value="TIDAK" disabled> Tidak
+                    @elseif ($tampiledit->nama_sesuai_lokasi == 'TIDAK')
+                      <input type="radio" name="nama_sesuai_lokasi" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="nama_sesuai_lokasi" value="TIDAK" disabled checked> Tidak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Alamat Sesuai Lokasi</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="alamat_sesuai_lokasi" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK" disabled> Tidak
+                    @if ($tampiledit->alamat_sesuai_lokasi == 'YA')
+                      <input type="radio" name="alamat_sesuai_lokasi" value="YA" disabled checked> Ya &emsp;
+                      <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK" disabled> Tidak
+                    @elseif ($tampiledit->alamat_sesuai_lokasi == 'TIDAK')
+                      <input type="radio" name="alamat_sesuai_lokasi" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK" disabled checked> Tidak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">TID & MID Sesuai</label>
 
                   <div class="col-sm-9">
-                    <input type="radio" name="tid_mid_sesuai" value="YA" disabled> Ya &emsp;
-                    <input type="radio" name="tid_mid_sesuai" value="TIDAK" disabled> Tidak
+                    @if ($tampiledit->tid_mid_sesuai == 'YA')
+                      <input type="radio" name="tid_mid_sesuai" value="YA" disabled checked> Ya &emsp;
+                      <input type="radio" name="tid_mid_sesuai" value="TIDAK" disabled> Tidak
+                    @elseif ($tampiledit->tid_mid_sesuai == 'TIDAK')
+                      <input type="radio" name="tid_mid_sesuai" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="tid_mid_sesuai" value="TIDAK" disabled checked> Tidak
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
