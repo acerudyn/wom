@@ -151,5 +151,15 @@ class DataSpkController extends Controller
 
     }
 
+public function grafikTahunan()
+  {
+      return view('admin/grafikTahunan');
+  }
+
+public function grafikBulanan()
+  {
+      return view('admin/grafikBulanan');
+  }
+
 
 }
