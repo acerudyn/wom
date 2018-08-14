@@ -358,13 +358,18 @@
                   </div>
                 </div>
                 <div class="form-group">
-                <label label for="inputEmail3" class="col-sm-3 control-label">Nama RO</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="inputEmail3"
-                   placeholder="Nama RO" name="nama_ro" disabled value="{{$data_mso->nama_ro}}">
-                   <input type="hidden" name="id_ro" value="{{$data_mso->id_mso}}">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Nama RO</label>
+
+                  <div class="col-sm-9">
+                    <select class="form-control" name="id_ro">
+                      <option value="">- Pilih RO -</option>
+
+                      @foreach($data_ro as $data)
+                        <option value="{{$data->id_ro}}">{{$data->kota_ro}}</option>
+                      @endforeach
+                    </select>
+                 </div>
                 </div>
-              </div>
               <div class="form-group">
               <label label for="inputEmail3" class="col-sm-3 control-label">Kota MSO</label>
               <div class="col-sm-9">
