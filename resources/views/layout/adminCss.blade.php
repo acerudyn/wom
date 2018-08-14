@@ -15,5 +15,7 @@
   <link rel="stylesheet" href="{{asset('admin/dist/css/skins/_all-skins.min.css')}}">
   <!-- Sweet Alert -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}">
+  <!-- Morris charts -->
+  <link rel="stylesheet" href="{{asset('admin/plugins/morris/morris.css')}}">
   <!--Sweet Alerts -->
   <script src="{{asset('js/sweetalert.min.js')}}"></script>
