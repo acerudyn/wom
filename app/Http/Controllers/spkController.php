@@ -218,7 +218,11 @@ public function indexMso()
           $perintah_spk      = $request['perintah_spk'];
           $status_spk        = $request['status_spk'];
           $id_ro             = $request['id_ro'];
+          $kota_mso          = strtoupper($request['kota_mso']);
 
+
+          $var = DB::table('ro')->where('id_ro', $id_ro)->first();
+          $nama_ro = $var->kota_ro;
 
           $foto_1 = 'no_image.jpg';
           $foto_2 = 'no_image.jpg';
@@ -236,13 +240,15 @@ public function indexMso()
           // Funtion convert d-m-Y to Y-m-d
           $convert_tgl_duedate_spk = date('Y-m-d', strtotime($tgl_duedate_spk));
 
-          DB::table('spk')
-                      ->where('id_spk', $id)
-                      ->update(['no_spk'            => $no_spk,
-                                'tgl_duedate_spk'   => $convert_tgl_duedate_spk,
-                                'jenis_spk'         => $jenis_spk,
-                                'perintah_spk'      => $perintah_spk,
-                                'status_spk'        => $status_spk]);
+          DB::table('spk')->where('id_spk', $id)
+                          ->update(['no_spk'            => $no_spk,
+                                    'tgl_duedate_spk'   => $convert_tgl_duedate_spk,
+                                    'jenis_spk'         => $jenis_spk,
+                                    'perintah_spk'      => $perintah_spk,
+                                    'status_spk'        => $status_spk,
+                                    'id_ro'             => $id_ro,
+                                    'nama_ro'           => $nama_ro,
+                                    'kota_mso'          => $kota_mso]);
 
           flash()->success('Succsess', 'Wow Good Job, Succsess Update Data !');
           return redirect()->to('/showSpk');
@@ -250,46 +256,15 @@ public function indexMso()
 
         } else { // if empty value request file image
 
-          $id_spk            = $request['id_spk'];
           $no_spk            = $request['no_spk'];
-          $tgl_spk           = $request['tgl_spk'];
-          $tgl_pengerjaan    = $request['tgl_pengerjaan'];
           $tgl_duedate_spk   = $request['tgl_duedate_spk'];
-          $tid               = $request['tid'];
-          $mid               = $request['mid'];
-          $nama_merchant     = $request['nama_merchant'];
-          $alamat_merchant   = $request['alamat_merchant'];
-          $pic_merchant      = $request['pic_merchant'];
-          $kontak_merchant   = $request['kontak_merchant'];
           $jenis_spk         = $request['jenis_spk'];
           $perintah_spk      = $request['perintah_spk'];
           $status_spk        = $request['status_spk'];
-          $status_pengerjaan = $request['status_pengerjaan'];
-          $jenis_edc         = $request['jenis_edc'];
-          $sn_edc            = $request['sn_edc'];
-          $tipe_komunikasi   = $request['tipe_komunikasi'];
-          $provider          = $request['provider'];
-          $nmr_simcard       = $request['nmr_simcard'];
-          $sn_simcard        = $request['sn_simcard'];
-          $adaptor           = $request['adaptor'];
-          $edc               = $request['edc'];
-          $stiker            = $request['stiker'];
-          $nama_sesuai_lokasi     = $request['nama_sesuai_lokasi'];
-          $alamat_sesuai_lokasi   = $request['alamat_sesuai_lokasi'];
-          $tid_mid_sesuai    = $request['tid_mid_sesuai'];
-          $test_debit        = $request['test_debit'];
-          $test_kredit       = $request['test_kredit'];
-          $test_prepaid      = $request['test_prepaid'];
-          $thermal_awal      = $request['thermal_awal'];
-          $thermal_drop      = $request['thermal_drop'];
-          $thermal_akhir     = $request['thermal_akhir'];
-          $keterangan_spk    = $request['keterangan_spk'];
           $nik_karyawan      = $request['nik_karyawan'];
           $id_ro             = $request['id_ro'];
           $nama_ro           = $request['nama_ro'];
-          $id_partner        = $request['id_partner'];
-          $status_invoicing  = $request['status_invoicing'];
-          $id_invoice        = $request['id_invoice'];
+          $kota_mso          = strtoupper($request['kota_mso']);
 
           // Funtion nama Mso
           $data_mso = DB::table('users')->where('nik_karyawan', $nik_karyawan)->first();
@@ -316,47 +291,15 @@ public function indexMso()
           $convert_tgl_pengerjaan = date('Y-m-d', strtotime($tgl_pengerjaan));
           $convert_tgl_duedate_spk = date('Y-m-d', strtotime($tgl_duedate_spk));
 
-          DB::table('spk')
-                      ->where('id_spk', $id)
-                      ->update(['no_spk'            => $no_spk,
-                                'tgl_spk'           => $convert_tgl_spk,
-                                'tgl_pengerjaan'    => $convert_tgl_pengerjaan,
-                                'tgl_duedate_spk'   => $convert_tgl_duedate_spk,
-                                'tid'               => $tid,
-                                'mid'               => $mid,
-                                'nama_merchant'     => $nama_merchant,
-                                'alamat_merchant'   => $alamat_merchant,
-                                'pic_merchant'      => $pic_merchant,
-                                'kontak_merchant'   => $kontak_merchant,
-                                'jenis_spk'         => $jenis_spk,
-                                'perintah_spk'      => $perintah_spk,
-                                'foto_1'            => $foto_1,
-                                'foto_2'            => $foto_2,
-                                'status_spk'        => $status_spk,
-                                'status_pengerjaan' => $status_pengerjaan,
-                                'jenis_edc'         => $jenis_edc,
-                                'sn_edc'            => $sn_edc,
-                                'tipe_komunikasi'   => $tipe_komunikasi,
-                                'provider'          => $provider,
-                                'nmr_simcard'       => $nmr_simcard,
-                                'sn_simcard'        => $sn_simcard,
-                                'adaptor'           => $adaptor,
-                                'edc'               => $edc,
-                                'stiker'            => $stiker,
-                                'nama_sesuai_lokasi'   => $nama_sesuai_lokasi,
-                                'alamat_sesuai_lokasi' => $alamat_sesuai_lokasi,
-                                'tid_mid_sesuai'    => $tid_mid_sesuai,
-                                'thermal_awal'      => $thermal_awal,
-                                'thermal_drop'      => $thermal_drop,
-                                'thermal_akhir'     => $akhir,
-                                'keterangan_spk'    => $keterangan_spk,
-                                'nik_karyawan'      => $nik_karyawan,
-                                'nama_mso'          => $nama_mso,
-                                'id_ro'             => $id_ro,
-                                'nama_ro'           => $nama_ro,
-                                'id_partner'        => $id_partner,
-                                'status_invoicing'  => $status_invoicing,
-                                'id_invoice'        => $id_invoice]);
+          DB::table('spk')->where('id_spk', $id)
+                          ->update(['no_spk'            => $no_spk,
+                                    'tgl_duedate_spk'   => $convert_tgl_duedate_spk,
+                                    'jenis_spk'         => $jenis_spk,
+                                    'perintah_spk'      => $perintah_spk,
+                                    'status_spk'        => $status_spk,
+                                    'id_ro'             => $id_ro,
+                                    'nama_ro'           => $nama_ro,
+                                    'kota_mso'          => $kota_mso]);
 
           flash()->success('Succsess', 'Wow Good Job, Succsess Update Data !');
           return redirect()->to('/showSpk');
