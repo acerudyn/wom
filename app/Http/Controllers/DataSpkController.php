@@ -97,10 +97,10 @@ class DataSpkController extends Controller
       if ($id_partner == 'all' AND $jenis_spk == 'all' AND $status_spk == 'all') {
           $data = DB::table('spk')->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
                                   ->whereBetween('updated_at',[$convert_awal_validasi, $convert_akhir_validasi])->get();
-          dd($data);
+          //dd($data);
 
           $data = json_decode( json_encode($data), true);
-          return Excel::create('Data_SPK_'.$bank->nama_partner.'_'.date('d-m-Y'), function($excel) use ($data) {
+          return Excel::create('Data_SPK_All_'.date('d-m-Y'), function($excel) use ($data) {
           	$excel->sheet('DataSpk', function($sheet) use ($data)
           	      {
           		$sheet->fromArray($data);
@@ -114,8 +114,9 @@ class DataSpkController extends Controller
                                               ['status_spk', $status_spk],
                                             ])->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
                                               ->whereBetween('updated_at',[$convert_awal_validasi, $convert_akhir_validasi])->get();
-        dd($data);
+        //dd($data);
 
+        $bank = DB::table('partner')->where('id_partner', $id_partner)->first();
         $data = json_decode( json_encode($data), true);
         return Excel::create('Data_SPK_'.$bank->nama_partner.'_'.date('d-m-Y'), function($excel) use ($data) {
         	$excel->sheet('DataSpk', function($sheet) use ($data)
