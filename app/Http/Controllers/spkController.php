@@ -156,6 +156,7 @@ public function indexMso()
     {
 
         $tampiledit = Spk::where('id_spk', $id)->first();
+        $data_ro    = DB::table('ro')->get();
         $partner    = DB::table('partner')->where('id_partner', $tampiledit->id_partner)->first();
         $data_mso   = DB::table('mso')->where('kota_mso', $tampiledit->kota_mso)->first();
         $karyawan   = DB::table('users')->where([
@@ -164,6 +165,7 @@ public function indexMso()
                                           ])->get();
         //dd($karyawan);
         return view('admin/editSpk')->with(compact('tampiledit'))
+                                    ->with(compact('data_ro'))
                                     ->with(compact('partner'))
                                     ->with(compact('data_mso'))
                                     ->with(compact('karyawan'));
@@ -215,6 +217,8 @@ public function indexMso()
           $jenis_spk         = $request['jenis_spk'];
           $perintah_spk      = $request['perintah_spk'];
           $status_spk        = $request['status_spk'];
+          $id_ro             = $request['id_ro'];
+
 
           $foto_1 = 'no_image.jpg';
           $foto_2 = 'no_image.jpg';
@@ -575,14 +579,18 @@ public function indexMso()
                 $id_partner = $request->id_partner;
                 $tgl_spk    = date('Y-m-d H:i:s');
                 $date       = date('Y-m-d H:i:s');
+                $id_ro      = '-';
+                $nama_ro    = '-';
+                $foto_1     = 'no_image.jpg';
+                $foto_2     = 'no_image.jpg';
 
                 $insert[] = ['id_spk' => $id, 'no_spk' => $value['no_spk'],
                 'tgl_spk' => $tgl_spk, 'tid' => $value['tid'],
                 'mid' => $value['mid'], 'nama_merchant' => $value['nama_merchant'],
                 'alamat_merchant' => $value['alamat_merchant'], 'pic_merchant' => $value['pic_merchant'],
                 'kontak_merchant' => $value['kontak_merchant'], 'jenis_spk' => $value['jenis_spk'],
-                'perintah_spk' => $value['perintah_spk'], 'foto_1' => $value['foto_1'],
-                'foto_2' => $value['foto_2'], 'status_spk' => $value['status_spk'],
+                'perintah_spk' => $value['perintah_spk'], 'foto_1' => $foto_1,
+                'foto_2' => $foto_2, 'status_spk' => $value['status_spk'],
                 'status_pengerjaan' => $value['status_pengerjaan'], 'jenis_edc' => $value['jenis_edc'],
                 'sn_edc' => $value['sn_edc'], 'tipe_komunikasi' => $value['tipe_komunikasi'],
                 'provider' => $value['provider'], 'nmr_simcard' => $value['nmr_simcard'],
@@ -593,7 +601,7 @@ public function indexMso()
                 'test_prepaid' => $value['test_prepaid'], 'thermal_awal' => $value['thermal_awal'],
                 'thermal_drop' => $value['thermal_drop'], 'thermal_akhir' => $value['thermal_akhir'],
                 'keterangan_spk' => $value['keterangan_spk'], 'nik_karyawan' => $value['nik_karyawan'],
-                'nama_mso' => $value['nama_mso'], 'id_ro' => $value['id_ro'], 'nama_ro' => $value['nama_ro'],
+                'nama_mso' => $value['nama_mso'], 'id_ro' => $id_ro, 'nama_ro' => $nama_ro,
                 'kota_mso' => $value['kota_mso'], 'id_partner' => $id_partner, 'status_invoicing' => $value['status_invoicing'],
                 'id_invoice' => $value['id_invoice'], 'created_at' => $date ];
               }
