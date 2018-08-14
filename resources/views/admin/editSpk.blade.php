@@ -361,7 +361,7 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Nama RO</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control" name="id_ro">
+                    <select class="form-control" name="id_ro" required>
                       <option value="">- Pilih RO -</option>
 
                       @foreach($data_ro as $data)
@@ -371,11 +371,10 @@
                  </div>
                 </div>
               <div class="form-group">
-              <label label for="inputEmail3" class="col-sm-3 control-label">Kota MSO</label>
+              <label label for="inputEmail3" class="col-sm-3 control-label">Kota RO</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputEmail3"
-                 placeholder="Nama RO" name="kota_mso" disabled value="{{$data_mso->kota_mso}}">
-                 <input type="hidden" name="nama_ro" value="{{$data_mso->nama_ro}}">
+                <input type="text" class="form-control" id="inputEmail3" required
+                 placeholder="Kota RO" name="kota_mso" value="{{$data_mso->kota_mso}}">
               </div>
             </div>
                 <div class="form-group">
