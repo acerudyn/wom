@@ -346,14 +346,14 @@
                   <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Awal" name="thermal_awal" disabled
-                     value="{{$tampiledit->thermal_akhir}}">
+                     value="{{$tampiledit->thermal_awal}}">
                   </div>
 
                   <label class="col-sm-3 control-label">Thermal Drop</label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputEmail3"
                      placeholder="Drop" name="thermal_drop" disabled
-                     value="">
+                     value="{{$tampiledit->thermal_drop}}">
                   </div>
                 </div>
                 <div class="form-group">
