@@ -153,7 +153,8 @@
 
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Peintah Spk" name="perintah_spk" required value="">
+                     placeholder="Perintah Spk" name="perintah_spk" required
+                     value="{{$tampiledit->perintah_spk}}">
                   </div>
                 </div>
                 <div class="form-group">
