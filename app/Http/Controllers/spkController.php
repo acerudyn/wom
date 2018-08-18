@@ -69,7 +69,7 @@ public function indexMso()
         'pic_merchant'    => 'required|min:3|max:30',
         'kontak_merchant' => 'required|digits_between:10,15|numeric',
         'perintah_spk'    => 'required|min:3|max:30',
-        'sn_edc'          => 'required|digits_between:9,9|numeric',
+        'sn_edc'          => 'required',
       ]);
 
       $id         = Uuid::generate(4);
@@ -157,7 +157,7 @@ public function indexMso()
        //dd($tambah);
 
        flash()->success('Succsess', 'Wow Good Job, Succsess Submit Data !');
-       return redirect('/showSpk');
+       return redirect('/showSpkByPartner');
    }
 
  public function create()
@@ -451,7 +451,7 @@ public function createByPartner()
               $update = Spk::where('id_spk', $id)->first();
 
               $this->validate($request, [
-                  'sn_edc'       => 'required|numeric',
+                  'sn_edc'       => 'required',
                   'nmr_simcard'  => 'required|numeric',
                   'sn_simcard'   => 'required|numeric',
                   'test_debit'   => 'required|numeric',

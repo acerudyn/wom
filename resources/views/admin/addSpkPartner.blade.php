@@ -161,8 +161,12 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">SN EDC</label>
 
                   <div class="col-sm-9">
+                    <!--
                     <input type="text" class="form-control" id="inputEmail3" required
                      placeholder="SN EDC" name="sn_edc"  value="{{old('sn_edc')}}">
+                   -->
+                   <input type="text" class="form-control" name="sn_edc" value="{{old('sn_edc')}}"
+                   data-inputmask='"mask": "999-999-999"' data-mask required>
                      @if ($errors->has('sn_edc'))
                         <p style="color : red;">{{ $errors->first('sn_edc') }}</p>  <!-- Error validasi -->
                      @endif
