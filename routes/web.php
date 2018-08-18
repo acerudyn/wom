@@ -58,6 +58,7 @@ Route::get('/deletePartner/{id}', 'partnerController@destroy');
 
 /* <================== SPK TABLE CONTROLLER ==================> */
 Route::get('/addSpk', 'spkController@create');
+Route::get('/addSpkPartner', 'spkController@createByPartner');
 Route::post('/storeSpk', 'spkController@store');
 Route::get('/showSpk', 'spkController@index');
 Route::get('/viewSpk/{id}', 'spkController@view');
