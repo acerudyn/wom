@@ -168,6 +168,14 @@ public function indexMso()
                                 ->with(compact('date_now'));
    }
 
+public function createByPartner()
+  {
+    $partners = DB::table('partner')->get();
+    $date_now = date('d-m-Y');
+    return view('admin/addSpkPartner')->with(compact('partners'))
+                                  ->with(compact('date_now'));
+  }
+
   public function view($id)
     {
       $tampil   = Spk::where('id_spk', $id)->first();
