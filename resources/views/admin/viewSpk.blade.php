@@ -53,16 +53,26 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Tgl Pengerjaan</label>
 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="Tgl Pengerjaan" name="telepon" required value="{{date('d-m-Y', strtotime($tampil->tgl_pengerjaan))}}">
+                    @if (empty($tampil->tgl_pengerjaan))
+                      <input type="text" class="form-control" id="inputEmail3"
+                       placeholder="Tanggal Pengerjaan" name="harga" required value="">
+                    @else
+                      <input type="text" class="form-control" id="inputEmail3"
+                       placeholder="tgl Due date" name="harga" required value="{{date('d-m-Y', strtotime($tampil->tgl_pengerjaan))}}">
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Tgl Duedate</label>
 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputEmail3"
-                     placeholder="tgl Due date" name="harga" required value="{{date('d-m-Y', strtotime($tampil->tgl_duedate_spk))}}">
+                    @if (empty($tampil->tgl_duedate_spk))
+                      <input type="text" class="form-control" id="inputEmail3"
+                       placeholder="Tanggal Due date" name="harga" required value="">
+                    @else
+                      <input type="text" class="form-control" id="inputEmail3"
+                       placeholder="tgl Due date" name="harga" required value="{{date('d-m-Y', strtotime($tampil->tgl_duedate_spk))}}">
+                    @endif
                   </div>
                 </div>
                 <div class="form-group">

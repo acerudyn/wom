@@ -22,7 +22,7 @@ class spkController extends Controller
 
   public function index()
     {
-        $datas = Spk::get();
+        $datas = Spk::orderBy('created_at', 'DESC')->get();
         return view('admin/showSpk')->with('datas', $datas);
     }
 
@@ -33,7 +33,7 @@ class spkController extends Controller
         $datas   = DB::table('spk')->where([
                                             ['nama_ro', $nama_ro],
                                             ['tgl_duedate_spk', '!=', null],
-                                          ])->get();
+                                          ])->orderBy('created_at', 'DESC')->get();
         //dd($datas);
         return view('admin/showSpkByRo')->with('datas', $datas);
     }
@@ -41,7 +41,7 @@ class spkController extends Controller
 public function indexMso()
   {
     $nik   = Auth::user()->nik_karyawan;
-    $datas = Spk::where('nik_karyawan', $nik)->get();
+    $datas = Spk::where('nik_karyawan', $nik)->orderBy('created_at', 'DESC')->get();
     return view('admin/showSpkByMso')->with('datas', $datas);
   }
 
@@ -180,6 +180,7 @@ public function createByPartner()
     {
       $tampil   = Spk::where('id_spk', $id)->first();
       $data_mso = DB::table('mso')->where('kota_mso', $tampil->kota_mso)->first();
+      //dd($tampil);
 
       // if data mso null
       if (empty($data_mso)) {
@@ -632,13 +633,15 @@ public function createByPartner()
                 $id_partner = $request->id_partner;
                 $tgl_spk    = date('Y-m-d H:i:s');
                 $date       = date('Y-m-d H:i:s');
+                $convert    = date('Y-m-d 23:59:00', strtotime($value['tgl_duedate_spk']));
                 $id_ro      = '-';
-                $nama_ro    = '-';
+                $id_invoice = '-';
+                $status_invoicing = '-';
                 $foto_1     = 'no_image.jpg';
                 $foto_2     = 'no_image.jpg';
 
                 $insert[] = ['id_spk' => $id, 'no_spk' => $value['no_spk'],
-                'tgl_spk' => $tgl_spk, 'tid' => $value['tid'],
+                'tgl_spk' => $tgl_spk, 'tgl_duedate_spk' => $convert, 'tid' => $value['tid'],
                 'mid' => $value['mid'], 'nama_merchant' => $value['nama_merchant'],
                 'alamat_merchant' => $value['alamat_merchant'], 'pic_merchant' => $value['pic_merchant'],
                 'kontak_merchant' => $value['kontak_merchant'], 'jenis_spk' => $value['jenis_spk'],
@@ -654,9 +657,9 @@ public function createByPartner()
                 'test_prepaid' => $value['test_prepaid'], 'thermal_awal' => $value['thermal_awal'],
                 'thermal_drop' => $value['thermal_drop'], 'thermal_akhir' => $value['thermal_akhir'],
                 'keterangan_spk' => $value['keterangan_spk'], 'nik_karyawan' => $value['nik_karyawan'],
-                'nama_mso' => $value['nama_mso'], 'id_ro' => $id_ro, 'nama_ro' => $nama_ro,
-                'kota_mso' => $value['kota_mso'], 'id_partner' => $id_partner, 'status_invoicing' => $value['status_invoicing'],
-                'id_invoice' => $value['id_invoice'], 'created_at' => $date ];
+                'nama_mso' => $value['nama_mso'], 'id_ro' => $id_ro, 'nama_ro' => $value['nama_ro'],
+                'kota_mso' => $value['kota_mso'], 'id_partner' => $id_partner, 'status_invoicing' => $status_invoicing,
+                'id_invoice' => $id_invoice, 'created_at' => $date ];
               }
                 //Kabar::truncate();
               if(!empty($insert)){

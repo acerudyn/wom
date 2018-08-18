@@ -250,6 +250,9 @@
                     @elseif ($tampiledit->adaptor == 'RUSAK')
                       <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
                       <input type="radio" name="adaptor" value="RUSAK" disabled checked> Rusak
+                    @else
+                      <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
                     @endif
                   </div>
                 </div>
@@ -263,6 +266,9 @@
                     @elseif ($tampiledit->edc == 'RUSAK')
                       <input type="radio" name="edc" value="BAIK" disabled> Baik &emsp;
                       <input type="radio" name="edc" value="RUSAK" disabled checked> Rusak
+                    @else
+                      <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
                     @endif
                   </div>
                 </div>
@@ -276,6 +282,9 @@
                     @elseif ($tampiledit->stiker == 'RUSAK')
                       <input type="radio" name="stiker" value="BAIK" disabled> Baik &emsp;
                       <input type="radio" name="stiker" value="RUSAK" disabled checked> Rusak
+                    @else
+                      <input type="radio" name="adaptor" value="BAIK" disabled> Baik &emsp;
+                      <input type="radio" name="adaptor" value="RUSAK" disabled> Rusak
                     @endif
                   </div>
                 </div>
@@ -289,6 +298,9 @@
                     @elseif ($tampiledit->nama_sesuai_lokasi == 'TIDAK')
                       <input type="radio" name="nama_sesuai_lokasi" value="YA" disabled> Ya &emsp;
                       <input type="radio" name="nama_sesuai_lokasi" value="TIDAK" disabled checked> Tidak
+                    @else
+                      <input type="radio" name="adaptor" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="adaptor" value="TIDAK" disabled> Tidak
                     @endif
                   </div>
                 </div>
@@ -302,6 +314,9 @@
                     @elseif ($tampiledit->alamat_sesuai_lokasi == 'TIDAK')
                       <input type="radio" name="alamat_sesuai_lokasi" value="YA" disabled> Ya &emsp;
                       <input type="radio" name="alamat_sesuai_lokasi" value="TIDAK" disabled checked> Tidak
+                    @else
+                      <input type="radio" name="adaptor" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="adaptor" value="TIDAK" disabled> Tidak
                     @endif
                   </div>
                 </div>
@@ -315,6 +330,9 @@
                     @elseif ($tampiledit->tid_mid_sesuai == 'TIDAK')
                       <input type="radio" name="tid_mid_sesuai" value="YA" disabled> Ya &emsp;
                       <input type="radio" name="tid_mid_sesuai" value="TIDAK" disabled checked> Tidak
+                    @else
+                      <input type="radio" name="adaptor" value="YA" disabled> Ya &emsp;
+                      <input type="radio" name="adaptor" value="TIDAK" disabled> Tidak
                     @endif
                   </div>
                 </div>
