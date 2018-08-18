@@ -73,6 +73,10 @@
                             $alias = 'Preventive Maintenance';
                           } elseif ($tampilPdf->jenis_spk == 'CM') {
                             $alias = 'Corrective Maintenance';
+                          } elseif ($tampilPdf->jenis_spk == 'Pasang') {
+                            $alias = 'Pasang';
+                          } elseif ($tampilPdf->jenis_spk == 'Tarik') {
+                            $alias = 'Tarik';
                           }
                         @endphp
                         <nobr>
