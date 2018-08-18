@@ -57,6 +57,117 @@ public function indexMso()
        return view('admin/showSpkByFinance')->with('datas', $datas);
    }
 
+ public function store(Request $request)
+   {
+
+      $this->validate($request, [
+        'nama_merchant'   => 'required|min:3|max:255',
+        'alamat_merchant' => 'required|min:3|max:255',
+        'kota_mso'        => 'required|min:3|max:50',
+        'tid'             => 'required|digits_between:8,8|numeric',
+        'mid'             => 'required|digits_between:15,15|numeric',
+        'pic_merchant'    => 'required|min:3|max:30',
+        'kontak_merchant' => 'required|digits_between:10,15|numeric',
+        'perintah_spk'    => 'required|min:3|max:30',
+        'sn_edc'          => 'required|digits_between:9,9|numeric',
+      ]);
+
+      $id         = Uuid::generate(4);
+      $id_partner = $request->id_partner;
+      $tgl_spk    = date('Y-m-d H:i:s');
+      $date       = date('Y-m-d H:i:s');
+      $no_spk     = '-';
+      $jenis_spk  = '-';
+      $id_ro      = '-';
+      $nama_ro    = '-';
+      $status_spk = '-';
+      $status_pengerjaan = '-';
+      $tipe_komunikasi   = '-';
+      $nmr_simcard       = '-';
+      $provider          = '-';
+      $sn_simcard        = '-';
+      $adaptor           = '-';
+      $edc               = '-';
+      $stiker            = '-';
+      $nama_sesuai_lokasi   = '-';
+      $alamat_sesuai_lokasi = '-';
+      $tid_mid_sesuai = '-';
+      $test_debit     = '-';
+      $test_kredit    = '-';
+      $test_prepaid   = '-';
+      $thermal_awal   = '-';
+      $thermal_drop   = '-';
+      $thermal_akhir  = '-';
+      $keterangan_spk = '-';
+      $nik_karyawan   = '-';
+      $nama_mso       = '-';
+      $id_ro          = '-';
+      $nama_ro        = '-';
+      $status_invoicing = '-';
+      $id_invoice = '-';
+      $foto_1     = 'no_image.jpg';
+      $foto_2     = 'no_image.jpg';
+
+       $tambah    = new Spk();
+       $tambah->id_spk  = $id;
+       $tambah->no_spk  = $no_spk;
+       $tambah->tgl_spk = $tgl_spk;
+       $tambah->tid     = $request->tid;
+       $tambah->mid     = $request->mid;
+       $tambah->nama_merchant   = $request->nama_merchant;
+       $tambah->alamat_merchant = $request->alamat_merchant;
+       $tambah->pic_merchant    = $request->pic_merchant;
+       $tambah->kontak_merchant = $request->kontak_merchant;
+       $tambah->jenis_spk       = $jenis_spk;
+       $tambah->perintah_spk    = $request->perintah_spk;
+       $tambah->foto_1  = $foto_1;
+       $tambah->foto_2  = $foto_2;
+       $tambah->status_spk        = $status_spk;
+       $tambah->status_pengerjaan = $status_pengerjaan;
+       $tambah->jenis_edc         = $request->jenis_edc;
+       $tambah->sn_edc            = $request->sn_edc;
+       $tambah->tipe_komunikasi   = $tipe_komunikasi;
+       $tambah->provider          = $provider;
+       $tambah->nmr_simcard       = $nmr_simcard;
+       $tambah->sn_simcard        = $sn_simcard;
+       $tambah->adaptor           = $adaptor;
+       $tambah->edc               = $edc;
+       $tambah->stiker            = $stiker;
+       $tambah->nama_sesuai_lokasi   = $nama_sesuai_lokasi;
+       $tambah->alamat_sesuai_lokasi = $alamat_sesuai_lokasi;
+       $tambah->tid_mid_sesuai       = $tid_mid_sesuai;
+       $tambah->test_debit       = $test_debit;
+       $tambah->test_kredit      = $test_kredit;
+       $tambah->test_prepaid     = $test_prepaid;
+       $tambah->thermal_awal     = $thermal_awal;
+       $tambah->thermal_drop     = $thermal_drop;
+       $tambah->thermal_akhir    = $thermal_akhir;
+       $tambah->keterangan_spk   = $keterangan_spk;
+       $tambah->nik_karyawan     = $nik_karyawan;
+       $tambah->nama_mso         = $nama_mso;
+       $tambah->id_ro            = $id_ro;
+       $tambah->nama_ro          = $nama_ro;
+       $tambah->kota_mso         = strtoupper($request->kota_mso);
+       $tambah->id_partner       = $request->id_partner;
+       $tambah->status_invoicing = $status_invoicing;
+       $tambah->id_invoice = $id_invoice;
+       $tambah->created_at = $date;
+       $tambah->save();
+
+       //dd($tambah);
+
+       flash()->success('Succsess', 'Wow Good Job, Succsess Submit Data !');
+       return redirect('/showSpk');
+   }
+
+ public function create()
+   {
+     $partners = DB::table('partner')->get();
+     $date_now = date('d-m-Y');
+     return view('admin/addSpk')->with(compact('partners'))
+                                ->with(compact('date_now'));
+   }
+
   public function view($id)
     {
       $tampil   = Spk::where('id_spk', $id)->first();
@@ -123,15 +234,6 @@ public function indexMso()
 
         $pdf = PDF::loadView('admin/downloadSpkPdf', $data); //load view page
         return $pdf->stream(); // view pdf
-    }
-
-  public function create()
-    {
-      $partners = DB::table('partner')->get();
-      $datas_ro = DB::table('ro')->get();
-
-      return view('admin/addSpk')->with(compact('partners'))
-                                 ->with(compact('datas_ro'));
     }
 
   public function destroy($id)
