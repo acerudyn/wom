@@ -442,7 +442,7 @@
       </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="{{'/addSpk'}}"><i class="fa fa-plus-square"></i> Input Data</a></li>
+      <li><a href="{{'/addSpkPartner'}}"><i class="fa fa-plus-square"></i> Input Data</a></li>
       <li class="active"><a href="{{'/showSpkByPartner'}}"><i class="fa fa-eye"></i> View Data</a></li>
     </ul>
     </li>
