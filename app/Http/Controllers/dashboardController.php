@@ -22,10 +22,9 @@ class dashboardController extends Controller
         $mso      = DB::table('mso')->count();
         $partner  = DB::table('partner')->count();
         $spk      = DB::table('spk')->count();
-        $invoice  = DB::table('invoice')->count();
 
         return view('admin/dashboard', compact('users','ro','mso','partner',
-        'spk','invoice'));
+        'spk'));
 
     }
 }
