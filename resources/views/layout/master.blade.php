@@ -149,6 +149,14 @@
             </span>
           </a>
         </li>
+        <li class="active treeview">
+          <a href="{{'/grafikFilter'}}">
+            <i class="fa fa-bar-chart"></i> <span>Statistik</span>
+            <span class="pull-right-container">
+              <!-- <i class="fa fa-angle-right pull-right"></i> -->
+            </span>
+          </a>
+        </li>
 
 <!-- ============= SUPER ADMIN =========== -->
   @if (Auth::user()->jabatan == 'Super Admin')
