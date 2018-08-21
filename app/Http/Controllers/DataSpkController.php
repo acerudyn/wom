@@ -165,38 +165,44 @@ public function grafikTahunan()
 
 public function filterChart(Request $request)
   {
+
     $ro    = $request->ro;
     $start = $request->awal_periode;
     $end   = $request->akhir_periode;
 
-    // Funtion convert d-m-Y to Y-m-d
-    $convert_awal  = date('Y-m-d', strtotime($start));
-    $convert_akhir = date('Y-m-d', strtotime($end));
+    if ($ro == 'all') {
+      // Funtion convert d-m-Y to Y-m-d
+      $convert_awal  = date('Y-m-d', strtotime($start));
+      $convert_akhir = date('Y-m-d', strtotime($end));
 
-    $grafik = DB::table('spk')->where('nama_ro', $ro)
-    ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-    ->groupBy('date')
-    ->orderBy('date', 'DESC')
-    ->get([
-          DB::raw('Date(created_at) as date'),
-          DB::raw('COUNT(*) as value')
-    ])->toJSON();
+      $grafik = DB::table('spk')->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+      ->groupBy('date')
+      ->orderBy('date', 'ASC')
+      ->get([
+            DB::raw('Date(created_at) as date'),
+            DB::raw('COUNT(*) as value'),
+            DB::raw('COUNT("CM") as cm')
+      ])->toJSON();
 
-    //dd($grafik);
+      dd($grafik);
+    } else {
+      // Funtion convert d-m-Y to Y-m-d
+      $convert_awal  = date('Y-m-d', strtotime($start));
+      $convert_akhir = date('Y-m-d', strtotime($end));
 
-    $data_ro = DB::table('ro')->get();
-
-/*
-    $stats = User::where('created_at', '>=', $range)
-        ->groupBy('date')
-        ->orderBy('date', 'DESC')
-        ->remember(1440)
-        ->get([
+      $grafik = DB::table('spk')->where('nama_ro', $ro)
+      ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+      ->groupBy('date')
+      ->orderBy('date', 'ASC')
+      ->get([
             DB::raw('Date(created_at) as date'),
             DB::raw('COUNT(*) as value')
-        ])->toJSON();
-*/
+      ])->toJSON();
 
+      //dd($grafik);
+    }
+
+  $data_ro = DB::table('ro')->get();
   return view('admin/grafikMorris')->with(compact('grafik'))
                                    ->with(compact('data_ro'));
 

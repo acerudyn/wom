@@ -138,6 +138,24 @@
     <!-- ChartJS 1.0.1 -->
     <script src="{{asset('admin/plugins/chartjs/Chart.min.js')}}"></script>
 
+
+<!-- ========== BAR CHARTS ========== -->
+<script>
+    var data_grafik = JSON.parse('{!! $grafik !!}');
+
+    new Morris.Bar({
+        // ID of the element in which to draw the chart.
+        element: 'bar-chart',
+        resize: true,
+        data: data_grafik,
+        barColors: ['#10b5e8'],
+        xkey: 'date',
+        ykeys: ['value'],
+        labels: ['Jumlah'],
+        hideHover: 'auto'
+    });
+</script>
+
 <script>
 
   /* <============================= MORRIS CHART =============================> */
@@ -160,24 +178,6 @@
         lineColors: ['#ef3a26', '#f7ce04', '#69f704', '#0485f7'],
         hideHover: 'auto'
       });
-
-      /* JENIS SPK CHART
-      var line = new Morris.Line({
-        element: 'line-chart',
-        resize: true,
-        data: [
-          {y: '2011 Q1', PASANG: 2666, PM: 2000, CM: 3000, TARIK: 1000},
-          {y: '2011 Q2', PASANG: 2778, PM: 1999, CM: 3980, TARIK: 1500},
-          {y: '2011 Q3', PASANG: 4912, PM: 2500, CM: 3090, TARIK: 1979},
-          {y: '2011 Q4', PASANG: 3767, PM: 2790, CM: 3896, TARIK: 1080}
-         ],
-        xkey: 'y',
-        ykeys: ['PASANG', 'PM', 'CM', 'TARIK'],
-        labels: ['PASANG', 'PM', 'CM', 'TARIK'],
-        lineColors: ['#3c8dbc','#f48c42', '#c41f19', '#76ba75'],
-        hideHover: 'auto'
-      });
-      */
 
       //DONUT CHART
       var donut = new Morris.Donut({
@@ -220,20 +220,6 @@
     ]
     });
     */
-
-    var data_grafik = <?= json_encode($grafik) ?>;
-    console.log(data_grafik);
-
-    new Morris.Bar({
-        element: 'bar-chart',
-        resize: true,
-        data: data_grafik,
-        barColors: ['#69f704'],
-        xkey: 'date',
-        ykeys: ['value'],
-        labels: ['Users'],
-        hideHover: 'auto'
-    });
 
     });
 
