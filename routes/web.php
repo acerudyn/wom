@@ -77,8 +77,10 @@ Route::post('/storeLookup', 'DataSpkController@filter');
 Route::get('/viewSpkLookup/{id}', 'DataSpkController@viewLookup');
 Route::get('/showExport', 'DataSpkController@showExport');
 Route::post('/storeExport', 'DataSpkController@filterExport');
+Route::get('/grafikFilter', 'DataSpkController@grafikFilter');
 Route::get('/showGrafikTahunan', 'DataSpkController@grafikTahunan');
 Route::get('/showGrafikBulanan', 'DataSpkController@grafikBulanan');
+Route::post('/storeChart', 'DataSpkController@filterChart');
 
 /*------------------------Admin RO--------------------------*/
 Route::get('/showSpkByRo', 'spkController@indexRo');
