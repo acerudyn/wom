@@ -148,10 +148,10 @@
         element: 'bar-chart',
         resize: true,
         data: data_grafik,
-        barColors: ['#10b5e8'],
-        xkey: 'date',
-        ykeys: ['value'],
-        labels: ['Jumlah'],
+        barColors: ['#10b5e8', '#f7ce04', '#69f704', '#ef3a26'],
+        xkey: 'tgl_spk',
+        ykeys: ['CM', 'PM', 'Pasang', 'Tarik'],
+        labels: ['CM', 'PM', 'Pasang', 'Tarik'],
         hideHover: 'auto'
     });
 </script>

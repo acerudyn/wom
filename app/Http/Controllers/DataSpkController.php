@@ -175,16 +175,44 @@ public function filterChart(Request $request)
       $convert_awal  = date('Y-m-d', strtotime($start));
       $convert_akhir = date('Y-m-d', strtotime($end));
 
-      $grafik = DB::table('spk')->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+      /*
+      Funtion Old on morris laravel github
+      
+      $grafik = DB::table('spk')
+      ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir]) ->where('jenis_spk', '=', 'CM')
+                                                                ->orWhere('jenis_spk', '=', 'PM')
       ->groupBy('date')
       ->orderBy('date', 'ASC')
       ->get([
             DB::raw('Date(created_at) as date'),
             DB::raw('COUNT(*) as value'),
-            DB::raw('COUNT("CM") as cm')
+            DB::raw('COUNT(jenis_spk=CM) as cm')
       ])->toJSON();
+      */
 
-      dd($grafik);
+      $grafik = DB::table('spk')
+                     ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                     ->whereIn('jenis_spk', ['CM','PM', 'Pasang', 'Tarik'])
+                     ->groupBy('created_at', 'jenis_spk')
+                     ->get([
+                          DB::raw('Date(created_at) as date'),
+                          DB::raw('count(jenis_spk) as CM', 'jenis_spk', '==', 'CM'),
+                          DB::raw('count(jenis_spk) as PM', 'jenis_spk', '==', 'PM'),
+                          DB::raw('count(jenis_spk) as Pasang', 'jenis_spk', '==', 'Pasang'),
+                          DB::raw('count(jenis_spk) as Tarik', 'jenis_spk', '==', 'Tarik')
+                     ])->toJSON();
+
+
+    /*
+    GET via SQL
+    $results = DB::select(DB::raw("SELECT tgl_spk, jenis_spk, COUNT(*) FROM spk
+    WHERE tgl_spk BETWEEN '2018-08-01' AND '2018-08-31'
+    GROUP BY tgl_spk, jenis_spk ORDER BY tgl_spk ASC"));
+    $json = json_encode($results);
+    */
+
+    //dd($grafik);
+
     } else {
       // Funtion convert d-m-Y to Y-m-d
       $convert_awal  = date('Y-m-d', strtotime($start));
