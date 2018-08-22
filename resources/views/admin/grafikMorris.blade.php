@@ -7,7 +7,7 @@
   <section class="content-header">
     <h1>
       Data SPK Charts
-      <small>Berdasarkan Data Real (NO HOAX)</small>
+      <small>Berdasarkan Data Realtime</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -149,8 +149,8 @@
         resize: true,
         data: data_grafik,
         barColors: ['#10b5e8', '#f7ce04', '#69f704', '#ef3a26'],
-        xkey: 'tgl_spk',
-        ykeys: ['CM', 'PM', 'Pasang', 'Tarik'],
+        xkey: 'date',
+        ykeys: ['cm', 'pm', 'psg', 'trk'],
         labels: ['CM', 'PM', 'Pasang', 'Tarik'],
         hideHover: 'auto'
     });

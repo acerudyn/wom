@@ -177,7 +177,7 @@ public function filterChart(Request $request)
 
       /*
       Funtion Old on morris laravel github
-      
+
       $grafik = DB::table('spk')
       ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir]) ->where('jenis_spk', '=', 'CM')
                                                                 ->orWhere('jenis_spk', '=', 'PM')
@@ -192,16 +192,26 @@ public function filterChart(Request $request)
 
       $grafik = DB::table('spk')
                      ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-                     ->whereIn('jenis_spk', ['CM','PM', 'Pasang', 'Tarik'])
                      ->groupBy('created_at', 'jenis_spk')
+                     ->orderBy('created_at', 'ASC')
                      ->get([
                           DB::raw('Date(created_at) as date'),
-                          DB::raw('count(jenis_spk) as CM', 'jenis_spk', '==', 'CM'),
-                          DB::raw('count(jenis_spk) as PM', 'jenis_spk', '==', 'PM'),
-                          DB::raw('count(jenis_spk) as Pasang', 'jenis_spk', '==', 'Pasang'),
-                          DB::raw('count(jenis_spk) as Tarik', 'jenis_spk', '==', 'Tarik')
+                          DB::raw('count(jenis_spk) as cm', 'jenis_spk', '==', 'CM'),
+                          DB::raw('count(jenis_spk) as pm', 'jenis_spk', '==', 'PM'),
+                          DB::raw('count(jenis_spk) as psg', 'jenis_spk', '==', 'Pasang'),
+                          DB::raw('count(jenis_spk) as trk', 'jenis_spk', '==', 'Tarik')
                      ])->toJSON();
 
+/*
+      $grafik = DB::table('spk')
+                    ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                    ->groupBy('created_at', 'jenis_spk')
+                    ->orderBy('created_at', 'ASC')
+                    ->get([
+                          DB::raw('Date(created_at) as date'),
+                          DB::raw('count(*) as jenis', 'jenis_spk')
+                    ])->toJSON();
+*/
 
     /*
     GET via SQL
@@ -211,7 +221,7 @@ public function filterChart(Request $request)
     $json = json_encode($results);
     */
 
-    //dd($grafik);
+    dd($grafik);
 
     } else {
       // Funtion convert d-m-Y to Y-m-d
