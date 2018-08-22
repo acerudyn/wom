@@ -142,6 +142,7 @@
 <!-- ========== BAR CHARTS ========== -->
 <script>
     var data_grafik = JSON.parse('{!! $grafik !!}');
+    console.log(data_grafik);
 
     new Morris.Bar({
         // ID of the element in which to draw the chart.
@@ -149,7 +150,7 @@
         resize: true,
         data: data_grafik,
         barColors: ['#10b5e8', '#f7ce04', '#69f704', '#ef3a26'],
-        xkey: 'date',
+        xkey: 'tgl_spk',
         ykeys: ['cm', 'pm', 'psg', 'trk'],
         labels: ['CM', 'PM', 'Pasang', 'Tarik'],
         hideHover: 'auto'
