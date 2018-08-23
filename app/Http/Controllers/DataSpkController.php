@@ -193,7 +193,7 @@ public function filterChart(Request $request)
       $cm = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
                   ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'),
-                                          DB::raw('DATE(tgl_spk) as date'))
+                                          DB::raw('DATE_FORMAT(tgl_spk, "%M") as date'))
                   ->whereRaw('spk.jenis_spk like "CM" ')
                   ->groupBy('tgl_spk', 'jenis_spk')
                   ->orderBy('tgl_spk', 'ASC')
@@ -218,7 +218,7 @@ public function filterChart(Request $request)
                   ->get();
 
       $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
-      //dd($grafik);
+      //dd($cm);
 
 
     /*
