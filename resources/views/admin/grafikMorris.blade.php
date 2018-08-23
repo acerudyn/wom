@@ -150,7 +150,7 @@
         resize: true,
         data: data_grafik,
         barColors: ['#10b5e8', '#f7ce04', '#69f704', '#ef3a26'],
-        xkey: 'tgl_spk',
+        xkey: 'date',
         ykeys: ['cm', 'pm', 'psg', 'trk'],
         labels: ['CM', 'PM', 'Pasang', 'Tarik'],
         hideHover: 'auto'

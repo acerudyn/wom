@@ -192,7 +192,8 @@ public function filterChart(Request $request)
 
       $cm = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'))
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'),
+                                          DB::raw('DATE(tgl_spk) as date'))
                   ->whereRaw('spk.jenis_spk like "CM" ')
                   ->groupBy('tgl_spk', 'jenis_spk')
                   ->orderBy('tgl_spk', 'ASC')
@@ -200,7 +201,8 @@ public function filterChart(Request $request)
 
       $pm = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as pm'))
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as pm'),
+                                          DB::raw('DATE(tgl_spk) as date'))
                   ->whereRaw('spk.jenis_spk like "PM" ')
                   ->groupBy('tgl_spk', 'jenis_spk')
                   ->orderBy('tgl_spk', 'ASC')
@@ -208,7 +210,8 @@ public function filterChart(Request $request)
 
       $psg = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as psg'))
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as psg'),
+                                          DB::raw('DATE(tgl_spk) as date'))
                   ->whereRaw('spk.jenis_spk like "Pasang" ')
                   ->groupBy('tgl_spk', 'jenis_spk')
                   ->orderBy('tgl_spk', 'ASC')
@@ -216,6 +219,7 @@ public function filterChart(Request $request)
 
       $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
       //dd($grafik);
+
 
     /*
     GET via SQL
@@ -232,16 +236,36 @@ public function filterChart(Request $request)
       $convert_awal  = date('Y-m-d', strtotime($start));
       $convert_akhir = date('Y-m-d', strtotime($end));
 
-      $grafik = DB::table('spk')->where('nama_ro', $ro)
-      ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
-      ->groupBy('date')
-      ->orderBy('date', 'ASC')
-      ->get([
-            DB::raw('Date(created_at) as date'),
-            DB::raw('COUNT(*) as value')
-      ])->toJSON();
+      $cm = DB::table('spk')->where('nama_ro', $ro)
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'),
+                                          DB::raw('DATE(tgl_spk) as date'))
+                  ->whereRaw('spk.jenis_spk like "CM" ')
+                  ->groupBy('tgl_spk', 'jenis_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
 
+      $pm = DB::table('spk')->where('nama_ro', $ro)
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as pm'),
+                                          DB::raw('DATE(tgl_spk) as date'))
+                  ->whereRaw('spk.jenis_spk like "PM" ')
+                  ->groupBy('tgl_spk', 'jenis_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
+
+      $psg = DB::table('spk')->where('nama_ro', $ro)
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as psg'),
+                                          DB::raw('DATE(tgl_spk) as date'))
+                  ->whereRaw('spk.jenis_spk like "Pasang" ')
+                  ->groupBy('tgl_spk', 'jenis_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
+
+      $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
       //dd($grafik);
+
     }
 
   $data_ro = DB::table('ro')->get();
