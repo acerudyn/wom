@@ -157,13 +157,48 @@
     });
 </script>
 
+<!-- =========== LINE CHART ================ -->
+<script>
+    var data_grafik = JSON.parse('{!! $grafik !!}');
+    console.log(data_grafik);
+
+      new Morris.Line({
+      element: 'line-chart',
+      resize: true,
+      data: data_grafik,
+      xkey: 'date',
+      ykeys: ['psg', 'pm', 'cm', 'trk'],
+      labels: ['Pasang', 'PM', 'CM', 'Tarik'],
+      lineColors: ['#0485f7', '#f7ce04', '#69f704', '#ef3a26'],
+      hideHover: 'auto'
+});
+</script>
+
+<!-- =========== DONUT CHART ================ -->
+<script>
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#ef3a26", "#ffb702", "#045bce", "#69f704", "#f3f724", "#10b5e8"],
+      data: [
+        {label: "Sinarmas", value: {{$sinarmas}}},
+        {label: "Danamon", value: {{$danamon}}},
+        {label: "Mandiri", value: {{$mandiri}}},
+        {label: "BRI", value: {{$bri}}},
+        {label: "BNI", value: {{$bni}}},
+        {label: "BCA", value: {{$bca}}}
+      ],
+      hideHover: 'auto'
+    });
+</script>
+
 <script>
 
   /* <============================= MORRIS CHART =============================> */
     $(function () {
       "use strict";
 
-      // LINE CHART
+      /*  LINE CHART
       var line = new Morris.Line({
         element: 'line-chart',
         resize: true,
@@ -179,22 +214,24 @@
         lineColors: ['#ef3a26', '#f7ce04', '#69f704', '#0485f7'],
         hideHover: 'auto'
       });
+      */
 
-      //DONUT CHART
+      /*DONUT CHART
       var donut = new Morris.Donut({
         element: 'sales-chart',
         resize: true,
         colors: ["#ef3a26", "#f7ce04", "#045bce", "#69f704", "#f3f724", "#10b5e8"],
         data: [
-          {label: "Sinarmas", value: 32},
-          {label: "Danamon", value: 20},
-          {label: "Mandiri", value: 13},
-          {label: "BRI", value: 30},
-          {label: "BNI", value: 27},
-          {label: "BCA", value: 25}
+          {label: "Sinarmas", value: {{$sinarmas}}},
+          {label: "Danamon", value: {{$danamon}}},
+          {label: "Mandiri", value: {{$mandiri}}},
+          {label: "BRI", value: {{$bri}}},
+          {label: "BNI", value: {{$bni}}},
+          {label: "BCA", value: {{$bca}}}
         ],
         hideHover: 'auto'
       });
+      */
 
       //BAR CHART
       /*

@@ -130,25 +130,6 @@ class DataSpkController extends Controller
         return redirect('/showExport');
       }
 
-
-      /*
-      $bank = DB::table('partner')->where('id_partner', $id_partner)->first();
-      $data = DB::table('spk')->where('id_partner', $id_partner)->whereBetween('tgl_pengerjaan', [$convert_awal, $convert_akhir])->get();
-
-      $datas  = DB::table('spk')->where([
-                                          ['id_partner', $id_partner],
-                                          [$parameter, $value_param],
-                                        ])->get();
-
-      $data = json_decode( json_encode($data), true);
-      return Excel::create('Data_SPK_'.$bank->nama_partner.'_'.date('d-m-Y'), function($excel) use ($data) {
-      	$excel->sheet('DataSpk', function($sheet) use ($data)
-      	      {
-      		$sheet->fromArray($data);
-      	      });
-      })->download($type);
-      */
-
     }
 
 public function grafikFilter()
@@ -190,6 +171,8 @@ public function filterChart(Request $request)
                      ])->toJSON();
 */
 
+/*=========== BAR CHART ===========*/
+
       $cm = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
                   ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'),
@@ -220,21 +203,47 @@ public function filterChart(Request $request)
       $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
       //dd($cm);
 
+/*=========== DONUT CHART ===========*/
 
-    /*
-    GET via SQL
-    $results = DB::select(DB::raw("SELECT tgl_spk, jenis_spk, COUNT(*) FROM spk
-    WHERE tgl_spk BETWEEN '2018-08-01' AND '2018-08-31'
-    GROUP BY tgl_spk, jenis_spk ORDER BY tgl_spk ASC"));
-    $json = json_encode($results);
-    */
+      $bri = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where('id_partner', 'like', '5b52b0958db2c')
+                  ->COUNT();
 
-    //dd($pm.$cm.$psg);
+      $bni = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where('id_partner', 'like', '5b52b0c78e609')
+                  ->COUNT();
+
+      $bca = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where('id_partner', 'like', '5b52b0ef58e00')
+                  ->COUNT();
+
+      $mandiri = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where('id_partner', 'like', '5b52b121a03e9')
+                  ->COUNT();
+
+     $danamon = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->where('id_partner', 'like', '5b52b141c5f6a')
+                 ->COUNT();
+
+     $sinarmas = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->where('id_partner', 'like', '5b52b16e80e30')
+                 ->COUNT();
+
+    // dd('[BRI : '.$bri.'][BNI : '.$bni.'][BCA : '.$bca.'][MANDIRI : '.$mandiri.'][DANAMON : '.
+    // $danamon.'][SINARMAS : '.$sinarmas.']');
 
     } else {
       // Funtion convert d-m-Y to Y-m-d
       $convert_awal  = date('Y-m-d', strtotime($start));
       $convert_akhir = date('Y-m-d', strtotime($end));
+
+/*=========== BAR CHART ===========*/
 
       $cm = DB::table('spk')->where('nama_ro', $ro)
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
@@ -266,11 +275,71 @@ public function filterChart(Request $request)
       $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
       //dd($grafik);
 
+      /*=========== DONUT CHART ===========*/
+
+      $bri = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where([
+                              ['id_partner', 'like', '5b52b0958db2c'],
+                              ['nama_ro', $ro],
+                          ])
+                  ->COUNT();
+
+      $bni = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where([
+                              ['id_partner', 'like', '5b52b0c78e609'],
+                              ['nama_ro', $ro],
+                          ])
+                  ->COUNT();
+
+      $bca = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where([
+                              ['id_partner', 'like', '5b52b0ef58e00'],
+                              ['nama_ro', $ro],
+                          ])
+                  ->COUNT();
+
+      $mandiri = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->where([
+                              ['id_partner', 'like', '5b52b121a03e9'],
+                              ['nama_ro', $ro],
+                          ])
+                  ->COUNT();
+
+      $danamon = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->where([
+                             ['id_partner', 'like', '5b52b141c5f6a'],
+                             ['nama_ro', $ro],
+                         ])
+                 ->COUNT();
+
+      $sinarmas = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->where([
+                             ['id_partner', 'like', '5b52b16e80e30'],
+                             ['nama_ro', $ro],
+                         ])
+                 ->COUNT();
+
+       // dd('[BRI : '.$bri.'][BNI : '.$bni.'][BCA : '.$bca.'][MANDIRI : '.$mandiri.'][DANAMON : '.
+       // $danamon.'][SINARMAS : '.$sinarmas.']');
+
+
     }
 
   $data_ro = DB::table('ro')->get();
   return view('admin/grafikMorris')->with(compact('grafik'))
-                                   ->with(compact('data_ro'));
+                                   ->with(compact('data_ro'))
+                                   ->with(compact('bri'))
+                                   ->with(compact('bni'))
+                                   ->with(compact('bca'))
+                                   ->with(compact('mandiri'))
+                                   ->with(compact('danamon'))
+                                   ->with(compact('sinarmas'));
 
   }
 
