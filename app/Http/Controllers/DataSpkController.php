@@ -173,6 +173,58 @@ public function filterChart(Request $request)
 
 /*=========== BAR CHART ===========*/
 
+      $selesai = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as selesai'),
+                                          DB::raw('DATE_FORMAT(tgl_spk, "%M") as date'))
+                  ->whereRaw('spk.status_spk like "Selesai" ')
+                  ->groupBy('tgl_spk', 'status_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
+
+      $pending = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as pending'),
+                                          DB::raw('DATE(tgl_spk) as date'))
+                  ->whereRaw('spk.status_spk like "Pending" ')
+                  ->groupBy('tgl_spk', 'status_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
+
+      $on_progress = DB::table('spk')
+                  ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                  ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as on_progress'),
+                                          DB::raw('DATE(tgl_spk) as date'))
+                  ->whereRaw('spk.status_spk like "On Progress" ')
+                  ->groupBy('tgl_spk', 'status_spk')
+                  ->orderBy('tgl_spk', 'ASC')
+                  ->get();
+
+     $tunggu_validasi = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as tunggu_validasi'),
+                                         DB::raw('DATE(tgl_spk) as date'))
+                 ->whereRaw('spk.status_spk like "Tunggu Validasi" ')
+                 ->groupBy('tgl_spk', 'status_spk')
+                 ->orderBy('tgl_spk', 'ASC')
+                 ->get();
+
+    $cancel = DB::table('spk')
+               ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+               ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as cancel'),
+                                       DB::raw('DATE(tgl_spk) as date'))
+               ->whereRaw('spk.status_spk like "Cancel" ')
+               ->groupBy('tgl_spk', 'status_spk')
+               ->orderBy('tgl_spk', 'ASC')
+               ->get();
+
+      $grafikBar = json_encode(array_merge(json_decode($selesai, true),json_decode($pending, true),
+      json_decode($on_progress, true), json_decode($tunggu_validasi, true),
+      json_decode($cancel, true)));
+      //dd($grafikBar);
+
+/*=========== LINE CHART ===========*/
+
       $cm = DB::table('spk')
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
                   ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as cm'),
@@ -200,7 +252,17 @@ public function filterChart(Request $request)
                   ->orderBy('tgl_spk', 'ASC')
                   ->get();
 
-      $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
+     $trk = DB::table('spk')
+                 ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                 ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as trk'),
+                                         DB::raw('DATE(tgl_spk) as date'))
+                 ->whereRaw('spk.jenis_spk like "Tarik" ')
+                 ->groupBy('tgl_spk', 'jenis_spk')
+                 ->orderBy('tgl_spk', 'ASC')
+                 ->get();
+
+      $grafikLine = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true),
+      json_decode($psg, true), json_decode($trk, true)));
       //dd($cm);
 
 /*=========== DONUT CHART ===========*/
@@ -243,7 +305,59 @@ public function filterChart(Request $request)
       $convert_awal  = date('Y-m-d', strtotime($start));
       $convert_akhir = date('Y-m-d', strtotime($end));
 
-/*=========== BAR CHART ===========*/
+      /*=========== BAR CHART ===========*/
+
+            $selesai = DB::table('spk')->where('nama_ro', $ro)
+                        ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                        ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as selesai'),
+                                                DB::raw('DATE_FORMAT(tgl_spk, "%M") as date'))
+                        ->whereRaw('spk.status_spk like "Selesai" ')
+                        ->groupBy('tgl_spk', 'status_spk')
+                        ->orderBy('tgl_spk', 'ASC')
+                        ->get();
+
+            $pending = DB::table('spk')->where('nama_ro', $ro)
+                        ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                        ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as pending'),
+                                                DB::raw('DATE(tgl_spk) as date'))
+                        ->whereRaw('spk.status_spk like "Pending" ')
+                        ->groupBy('tgl_spk', 'status_spk')
+                        ->orderBy('tgl_spk', 'ASC')
+                        ->get();
+
+            $on_progress = DB::table('spk')->where('nama_ro', $ro)
+                        ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                        ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as on_progress'),
+                                                DB::raw('DATE(tgl_spk) as date'))
+                        ->whereRaw('spk.status_spk like "On Progress" ')
+                        ->groupBy('tgl_spk', 'status_spk')
+                        ->orderBy('tgl_spk', 'ASC')
+                        ->get();
+
+           $tunggu_validasi = DB::table('spk')->where('nama_ro', $ro)
+                       ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                       ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as tunggu_validasi'),
+                                               DB::raw('DATE(tgl_spk) as date'))
+                       ->whereRaw('spk.status_spk like "Tunggu Validasi" ')
+                       ->groupBy('tgl_spk', 'status_spk')
+                       ->orderBy('tgl_spk', 'ASC')
+                       ->get();
+
+          $cancel = DB::table('spk')->where('nama_ro', $ro)
+                     ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                     ->select('spk.tgl_spk', DB::raw('COUNT(status_spk) as cancel'),
+                                             DB::raw('DATE(tgl_spk) as date'))
+                     ->whereRaw('spk.status_spk like "Cancel" ')
+                     ->groupBy('tgl_spk', 'status_spk')
+                     ->orderBy('tgl_spk', 'ASC')
+                     ->get();
+
+            $grafikBar = json_encode(array_merge(json_decode($selesai, true),json_decode($pending, true),
+            json_decode($on_progress, true), json_decode($tunggu_validasi, true),
+            json_decode($cancel, true)));
+            //dd($grafikBar);
+
+/*=========== LINE CHART ===========*/
 
       $cm = DB::table('spk')->where('nama_ro', $ro)
                   ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
@@ -272,7 +386,17 @@ public function filterChart(Request $request)
                   ->orderBy('tgl_spk', 'ASC')
                   ->get();
 
-      $grafik = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true), json_decode($psg, true)));
+    $trk = DB::table('spk')->where('nama_ro', $ro)
+                ->whereBetween('tgl_spk',[$convert_awal, $convert_akhir])
+                ->select('spk.tgl_spk', DB::raw('COUNT(jenis_spk) as trk'),
+                                        DB::raw('DATE(tgl_spk) as date'))
+                ->whereRaw('spk.jenis_spk like "Traik" ')
+                ->groupBy('tgl_spk', 'jenis_spk')
+                ->orderBy('tgl_spk', 'ASC')
+                ->get();
+
+      $grafikLine = json_encode(array_merge(json_decode($cm, true),json_decode($pm, true),
+      json_decode($psg, true), json_decode($trk, true)));
       //dd($grafik);
 
       /*=========== DONUT CHART ===========*/
@@ -332,7 +456,8 @@ public function filterChart(Request $request)
     }
 
   $data_ro = DB::table('ro')->get();
-  return view('admin/grafikMorris')->with(compact('grafik'))
+  return view('admin/grafikMorris')->with(compact('grafikBar'))
+                                   ->with(compact('grafikLine'))
                                    ->with(compact('data_ro'))
                                    ->with(compact('bri'))
                                    ->with(compact('bni'))

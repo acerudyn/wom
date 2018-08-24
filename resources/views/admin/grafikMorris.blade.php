@@ -141,31 +141,31 @@
 
 <!-- ========== BAR CHARTS ========== -->
 <script>
-    var data_grafik = JSON.parse('{!! $grafik !!}');
-    console.log(data_grafik);
+    var grafik_bar = JSON.parse('{!! $grafikBar !!}');
+    console.log(grafik_bar);
 
     new Morris.Bar({
         // ID of the element in which to draw the chart.
         element: 'bar-chart',
         resize: true,
-        data: data_grafik,
-        barColors: ['#10b5e8', '#f7ce04', '#69f704', '#ef3a26'],
+        data: grafik_bar,
+        barColors: ['#69f704', '#f7ce04', '#0485f7', '#ed6623', '#ef3a26'],
         xkey: 'date',
-        ykeys: ['cm', 'pm', 'psg', 'trk'],
-        labels: ['CM', 'PM', 'Pasang', 'Tarik'],
+        ykeys: ['selesai', 'pending', 'on_progress', 'tunggu_validasi', 'cancel'],
+        labels: ['Selesai', 'Pending', 'On Progress', 'Tunggu Validasi', 'Cancel'],
         hideHover: 'auto'
     });
 </script>
 
 <!-- =========== LINE CHART ================ -->
 <script>
-    var data_grafik = JSON.parse('{!! $grafik !!}');
-    console.log(data_grafik);
+    var grafik_line = JSON.parse('{!! $grafikLine !!}');
+    console.log(grafik_line);
 
       new Morris.Line({
       element: 'line-chart',
       resize: true,
-      data: data_grafik,
+      data: grafik_line,
       xkey: 'date',
       ykeys: ['psg', 'pm', 'cm', 'trk'],
       labels: ['Pasang', 'PM', 'CM', 'Tarik'],
